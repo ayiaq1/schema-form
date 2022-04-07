@@ -1,0 +1,66 @@
+{
+  "name": "@test/element-form",
+  "version": "0.0.1",
+  "description": "给开发者用的schema form（基于antd-react）",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ayiaq1/schema-form.git"
+  },
+  "author": "250751717@qq.com",
+  "scripts": {
+    "bootstrap": "npm install && node ./scripts/bootstrap.js",
+    "start": "dumi dev",
+    "doc:build": "rm -rf docs-dist && dumi build",
+    "build": "node ./scripts/build.js && npm pack",
+    "clear": "node ./scripts/clear.js",
+    "deploy": "npm run doc:build && gh-pages -d docs-dist",
+    "prettier": "prettier --write \"**/*.{js,jsx,tsx,ts,less,md,json}\""
+  },
+  "main": "dist/index.js",
+  "module": "dist/index.esm.js",
+  "typings": "dist/index.d.ts",
+  "gitHooks": {
+    "pre-commit": "lint-staged"
+  },
+  "lint-staged": {
+    "*.{js,jsx,less,md,json}": [
+      "prettier --write"
+    ],
+    "*.ts?(x)": [
+      "prettier --parser=typescript --write"
+    ]
+  },
+  "dependencies": {
+    "classnames": "^2.2.6",
+    "omit.js": "^2.0.2"
+  },
+  "devDependencies": {
+    "@ant-design/icons": ">=4.0.0",
+    "@types/jest": "^24.9.1",
+    "@umijs/plugin-esbuild": "^1.4.1",
+    "@umijs/test": "^3.0.5",
+    "ahooks": "^3.3.0",
+    "antd": "^4.19.5",
+    "babel-plugin-import": "^1.13.3",
+    "classnames": "^2.2.6",
+    "cross-env": "^7.0.2",
+    "dumi": "^1.1.30",
+    "father-build": "^1.17.2",
+    "gh-pages": "^3.2.3",
+    "jest": "^26.0.1",
+    "jest-fetch-mock": "^3.0.3",
+    "lerna": "^3.22.1",
+    "lint-staged": "^10.0.7",
+    "mockjs": "^1.1.0",
+    "omit.js": "^2.0.2",
+    "prettier": "^2.2.1",
+    "react": "^16.9.0",
+    "react-dom": "^16.9.0",
+    "shelljs": "^0.8.4",
+    "typescript": "^4.3.5",
+    "yorkie": "^2.0.0"
+  },
+  "files": [
+    "element"
+  ]
+}

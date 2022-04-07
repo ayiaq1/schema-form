@@ -1,0 +1,42 @@
+{
+  "element": {
+    "default": [
+      {
+        "identifier": "value",
+        "description": "props 传入的值",
+        "type": "(string | string[]) & string"
+      },
+      {
+        "identifier": "mode",
+        "description": "模式类型",
+        "type": "ModeType"
+      },
+      {
+        "identifier": "ellipsis",
+        "description": "超长省略 true",
+        "type": "boolean"
+      },
+      {
+        "identifier": "style",
+        "type": "CSSProperties"
+      },
+      {
+        "identifier": "className",
+        "type": "string"
+      },
+      {
+        "identifier": "render",
+        "type": "unknown"
+      },
+      {
+        "identifier": "onChange",
+        "description": "form传入的",
+        "type": "(val?: any) => void"
+      },
+      {
+        "identifier": "type",
+        "type": "\"text\""
+      }
+    ]
+  }
+}

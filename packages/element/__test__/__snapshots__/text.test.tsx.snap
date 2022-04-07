@@ -1,0 +1,56 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Text Save Snapshot 1`] = `
+<span
+  className="ant-typography ant-typography-ellipsis ant-typography-single-line"
+  onClick={null}
+  style={
+    Object {
+      "WebkitLineClamp": undefined,
+    }
+  }
+>
+  <span
+    aria-hidden={true}
+    style={
+      Object {
+        "display": "block",
+        "left": 0,
+        "pointerEvents": "none",
+        "position": "fixed",
+        "top": 0,
+        "visibility": "hidden",
+        "whiteSpace": "nowrap",
+        "wordBreak": "keep-all",
+        "zIndex": -9999,
+      }
+    }
+  >
+    lg
+  </span>
+  <span
+    aria-hidden={true}
+    style={
+      Object {
+        "display": "block",
+        "left": 0,
+        "margin": 0,
+        "padding": 0,
+        "pointerEvents": "none",
+        "position": "fixed",
+        "top": 0,
+        "visibility": "hidden",
+        "whiteSpace": "normal",
+        "width": 0,
+        "zIndex": -9999,
+      }
+    }
+  >
+    <span
+      aria-hidden={true}
+    >
+      ...
+    </span>
+  </span>
+</span>
+`;

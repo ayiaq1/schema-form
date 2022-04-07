@@ -1,0 +1,27 @@
+{
+  "extends": "./node_modules/@umijs/fabric/dist/tsconfig.json",
+  "compilerOptions": {
+    "target": "es5",
+    "module": "amd",
+    "types": ["node", "jest"],
+    "typeRoots": ["node_modules/@types"],
+    "skipLibCheck": true,
+    "baseUrl": "./",
+    "rootDir": "./src",
+    "outDir": "./lib",
+    "paths": {
+      "@/*": ["src/*"]
+    }
+  },
+  "include": [
+    "src/**/*",
+    "../example/**/*",
+    "../__test__/**/*",
+    "../tests/**/*",
+    "typings/**/*",
+    "typings.d.ts",
+    ".eslintrc.js",
+    "*.config.js"
+  ],
+  "exclude": ["node_modules", "dist", "lib"]
+}
