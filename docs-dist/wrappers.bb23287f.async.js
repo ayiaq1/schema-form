@@ -455,9 +455,9 @@ const Field = (props: IFieldProps) => {
   return (
     <>
       {mode === 'read' ? (
-        <Text {...fieldProps} value={value} type='text' />
+        <Text {...fieldProps} value={value} type="text" />
       ) : (
-        <InputWrap fieldProps={fieldProps as any} value={value} onChange={onChange} type='input' />
+        <InputWrap fieldProps={fieldProps as any} value={value} onChange={onChange} type="input" />
       )}
     </>
   );
@@ -650,7 +650,11 @@ const RowLayout = ({
         return (
           <Col {...colProps} span={col ?? span} key={reset?.name?.toString() ?? index.toString()}>
             {reset.type === 'group' ? (
-              <ItemGroupWrap {...reset} formDisabled={formDisabled} initialValues={formReset.initialValues} />
+              <ItemGroupWrap
+                {...reset}
+                formDisabled={formDisabled}
+                initialValues={formReset.initialValues}
+              />
             ) : (
               <ItemWrap
                 {...reset}
@@ -824,7 +828,11 @@ const CustomLayout = ({
         return (
           <Fragment key={item?.name?.toString() ?? index.toString()}>
             {item.type === 'group' ? (
-              <ItemGroupWrap {...item} formDisabled={formDisabled} initialValues={formReset.initialValues} />
+              <ItemGroupWrap
+                {...item}
+                formDisabled={formDisabled}
+                initialValues={formReset.initialValues}
+              />
             ) : (
               <ItemWrap
                 {...item}
@@ -1129,8 +1137,7 @@ export const initValues = {
       url: 'https://www.baidu.com/img/flexible/logo/pc/index@2.png',
     },
   ],
-  image:
-    'https://www.baidu.com/img/flexible/logo/pc/index@2.png',
+  image: 'https://www.baidu.com/img/flexible/logo/pc/index@2.png',
   tag: 'default Tag',
   progress: 48,
   groupinputdefault: 'groupinputdefault',

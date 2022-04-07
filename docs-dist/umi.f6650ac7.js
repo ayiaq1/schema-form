@@ -9992,7 +9992,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
           },
         });
         var o = n(97175),
-          a = { basename: '/' };
+          a = { basename: 'https://ayiaq1.github.io/element-form/' };
         window.routerBase && (a.basename = window.routerBase);
         var s = { NODE_ENV: 'production' }.__IS_SERVER ? null : (0, o.q_)(a),
           u = function () {
@@ -22223,7 +22223,7 @@ Add a <Suspense fallback=...> component higher in the tree to provide a loading 
             53: '638ef85f',
             148: 'dd2d2ea5',
             271: 'a4200284',
-            275: '0ad3d2c2',
+            275: 'bb23287f',
             336: '7f0feb11',
             443: 'be47a120',
             569: 'ae6cfce4',
@@ -22351,7 +22351,7 @@ Add a <Suspense fallback=...> component higher in the tree to provide a loading 
       };
     })(),
     (function () {
-      L.p = '/';
+      L.p = 'https://ayiaq1.github.io/element-form/';
     })(),
     (function () {
       var d = function (a, s, u) {
@@ -23456,7 +23456,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
                 locale: 'en-US',
                 order: null,
                 filePath: 'README.md',
-                updatedTime: 1649321772e3,
+                updatedTime: 1649334684e3,
                 slugs: [
                   { depth: 1, value: 'element-form', heading: 'element-form' },
                 ],
@@ -23475,7 +23475,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
               exact: !0,
               meta: {
                 filePath: 'docs/guide/Element.md',
-                updatedTime: 1649331186648,
+                updatedTime: 1649334684e3,
                 slugs: [
                   { depth: 1, value: 'Element', heading: 'element' },
                   { depth: 2, value: 'API', heading: 'api' },
@@ -23497,7 +23497,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
               exact: !0,
               meta: {
                 filePath: 'docs/guide/SchemaFormCustom.md',
-                updatedTime: 1649331468720,
+                updatedTime: 1649334684e3,
                 slugs: [
                   { depth: 1, value: 'Custom', heading: 'custom' },
                   {
@@ -23524,7 +23524,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
               exact: !0,
               meta: {
                 filePath: 'docs/guide/SchemaFormRow.md',
-                updatedTime: 1649331358787,
+                updatedTime: 1649334684e3,
                 slugs: [
                   { depth: 1, value: 'Row', heading: 'row' },
                   {

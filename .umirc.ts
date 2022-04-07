@@ -3,12 +3,15 @@ import { defineConfig } from 'dumi';
 const { getPackages } = require('./scripts/common');
 
 const appName = 'element-form';
-// const isProd = process.env.NODE_ENV === 'production';
+const isProd = process.env.NODE_ENV === 'production';
+const doman = 'https://ayiaq1.github.io/element-form/';
 const packages = getPackages().map((item) => {
   return `packages/${item}/src`;
 });
 export default defineConfig({
   title: appName,
+  base: isProd ? doman : '/',
+  publicPath: isProd ? doman : '/',
   mode: 'doc',
   hash: true,
   outputPath: 'docs-dist',
