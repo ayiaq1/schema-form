@@ -6,7 +6,7 @@
  */
 import React, { memo } from 'react';
 import { Form } from 'antd';
-import { IItemWrapProps } from './typings';
+import type { IItemWrapProps } from './typings';
 import { Element } from '../../index';
 import RenderWrap from './RenderWrap';
 

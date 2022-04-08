@@ -2,9 +2,9 @@ import { defineConfig } from 'dumi';
 
 const { getPackages } = require('./scripts/common');
 
-const appName = 'element-form';
+const appName = 'schema-form';
 const isProd = process.env.NODE_ENV === 'production';
-const doman = 'https://ayiaq1.github.io/element-form/';
+const doman = 'https://ayiaq1.github.io/schema-form/';
 const packages = getPackages().map((item) => {
   return `packages/${item}/src`;
 });

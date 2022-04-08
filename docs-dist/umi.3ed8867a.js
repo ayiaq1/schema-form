@@ -9992,7 +9992,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
           },
         });
         var o = n(97175),
-          a = { basename: 'https://ayiaq1.github.io/element-form/' };
+          a = { basename: 'https://ayiaq1.github.io/schema-form/' };
         window.routerBase && (a.basename = window.routerBase);
         var s = { NODE_ENV: 'production' }.__IS_SERVER ? null : (0, o.q_)(a),
           u = function () {
@@ -22217,18 +22217,18 @@ Add a <Suspense fallback=...> component higher in the tree to provide a loading 
           }[d] || d) +
           '.' +
           {
-            15: '08cbfb18',
-            16: '32bbb4ab',
-            50: '56e3aee7',
-            53: '638ef85f',
-            148: 'dd2d2ea5',
-            271: 'a4200284',
-            275: 'bb23287f',
-            336: '7f0feb11',
-            443: 'be47a120',
-            569: 'ae6cfce4',
-            746: '9cc10909',
-            892: 'd8655d65',
+            15: 'c9e926fd',
+            16: 'eb5ca607',
+            50: 'aaee48fe',
+            53: '80f96fed',
+            148: 'c24337b5',
+            271: 'adec1a4d',
+            275: 'b4ca095d',
+            336: '55093fe3',
+            443: '909d22b5',
+            569: 'a2216139',
+            746: '425db601',
+            892: '74e31e0a',
           }[d] +
           '.async.js'
         );
@@ -22283,7 +22283,7 @@ Add a <Suspense fallback=...> component higher in the tree to provide a loading 
     })(),
     (function () {
       var d = {},
-        p = '@test/element-form:';
+        p = '@test/schema-form:';
       L.l = function (n, o, a, s) {
         if (d[n]) {
           d[n].push(o);
@@ -22351,7 +22351,7 @@ Add a <Suspense fallback=...> component higher in the tree to provide a loading 
       };
     })(),
     (function () {
-      L.p = 'https://ayiaq1.github.io/element-form/';
+      L.p = 'https://ayiaq1.github.io/schema-form/';
     })(),
     (function () {
       var d = function (a, s, u) {
@@ -22472,8 +22472,8 @@ Add a <Suspense fallback=...> component higher in the tree to provide a loading 
           for (o && o(a); h < s.length; h++)
             (c = s[h]), L.o(d, c) && d[c] && d[c][0](), (d[s[h]] = 0);
         },
-        n = (self.webpackChunk_test_element_form =
-          self.webpackChunk_test_element_form || []);
+        n = (self.webpackChunk_test_schema_form =
+          self.webpackChunk_test_schema_form || []);
       n.forEach(p.bind(null, 0)), (n.push = p.bind(null, n.push.bind(n)));
     })();
   var rf = {};
@@ -23456,13 +23456,13 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
                 locale: 'en-US',
                 order: null,
                 filePath: 'README.md',
-                updatedTime: 1649334684e3,
+                updatedTime: 1649335275e3,
                 slugs: [
-                  { depth: 1, value: 'element-form', heading: 'element-form' },
+                  { depth: 1, value: 'schema-form', heading: 'schema-form' },
                 ],
-                title: 'element-form',
+                title: 'schema-form',
               },
-              title: 'element-form',
+              title: 'schema-form',
             },
             {
               path: '/guide/element',
@@ -23484,7 +23484,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
                 hasPreviewer: !0,
                 group: { path: '/guide', title: 'Guide' },
               },
-              title: 'Element - element-form',
+              title: 'Element - schema-form',
             },
             {
               path: '/guide/schema-form-custom',
@@ -23511,7 +23511,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
                 hasPreviewer: !0,
                 group: { path: '/guide', title: 'Guide' },
               },
-              title: 'Custom - element-form',
+              title: 'Custom - schema-form',
             },
             {
               path: '/guide/schema-form-row',
@@ -23538,11 +23538,11 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
                 hasPreviewer: !0,
                 group: { path: '/guide', title: 'Guide' },
               },
-              title: 'Row - element-form',
+              title: 'Row - schema-form',
             },
             { path: '/guide', meta: {}, exact: !0, redirect: '/guide/element' },
           ],
-          title: 'element-form',
+          title: 'schema-form',
           component: (Fe) => Fe.children,
         },
       ];
@@ -23572,7 +23572,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
                 isServer: { NODE_ENV: 'production' }.__IS_SERVER,
                 dynamicImport: !0,
                 rootElement: 'root',
-                defaultTitle: 'element-form',
+                defaultTitle: 'schema-form',
               },
             });
             return go(Le);

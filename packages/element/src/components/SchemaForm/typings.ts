@@ -1,6 +1,5 @@
-import { FormInstance, FormItemProps } from 'antd/lib/form';
-import { CSSProperties } from 'react';
-import {
+import type { FormInstance, FormItemProps } from 'antd/lib/form';
+import type {
   IText,
   IInputProps,
   ICustom,

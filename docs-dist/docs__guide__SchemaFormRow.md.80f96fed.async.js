@@ -1,6 +1,6 @@
-(self.webpackChunk_test_element_form =
-  self.webpackChunk_test_element_form || []).push([
-  [892],
+(self.webpackChunk_test_schema_form =
+  self.webpackChunk_test_schema_form || []).push([
+  [53],
   {
     73602: function (s, r, t) {
       'use strict';
@@ -12,16 +12,16 @@
       var e = t(67624),
         n = t(93142);
     },
-    4179: function (s, r, t) {
+    65788: function (s, r, t) {
       'use strict';
       t.r(r);
       var e = t(67294),
         n = t(16924),
         o = t(44663),
         d = t(25016),
-        E = e.memo((l) => {
-          var a = l.demos,
-            m = a['element-schemademocustom'].component;
+        E = e.memo((a) => {
+          var l = a.demos,
+            m = l['element-schemademorow'].component;
           return e.createElement(
             e.Fragment,
             null,
@@ -33,32 +33,32 @@
                 { className: 'markdown' },
                 e.createElement(
                   'h1',
-                  { id: 'custom' },
+                  { id: 'row' },
                   e.createElement(
                     n.AnchorLink,
-                    { to: '#custom', 'aria-hidden': 'true', tabIndex: -1 },
+                    { to: '#row', 'aria-hidden': 'true', tabIndex: -1 },
                     e.createElement('span', { className: 'icon icon-link' }),
                   ),
-                  'Custom',
+                  'Row',
                 ),
                 e.createElement(
                   'h2',
-                  { id: '\u81EA\u5B9A\u4E49\u5E03\u5C40-custom' },
+                  { id: 'row-\u5E03\u5C40' },
                   e.createElement(
                     n.AnchorLink,
                     {
-                      to: '#\u81EA\u5B9A\u4E49\u5E03\u5C40-custom',
+                      to: '#row-\u5E03\u5C40',
                       'aria-hidden': 'true',
                       tabIndex: -1,
                     },
                     e.createElement('span', { className: 'icon icon-link' }),
                   ),
-                  '\u81EA\u5B9A\u4E49\u5E03\u5C40: custom',
+                  'Row \u5E03\u5C40',
                 ),
               ),
               e.createElement(
                 d.default,
-                a['element-schemademocustom'].previewerProps,
+                l['element-schemademorow'].previewerProps,
                 e.createElement(m, null),
               ),
               e.createElement(
@@ -83,18 +83,18 @@
             ),
           );
         });
-      r.default = (l) => {
-        var a = e.useContext(n.context),
-          m = a.demos;
+      r.default = (a) => {
+        var l = e.useContext(n.context),
+          m = l.demos;
         return (
           e.useEffect(() => {
-            var c;
-            l != null &&
-              (c = l.location) !== null &&
-              c !== void 0 &&
-              c.hash &&
+            var i;
+            a != null &&
+              (i = a.location) !== null &&
+              i !== void 0 &&
+              i.hash &&
               n.AnchorLink.scrollToAnchor(
-                decodeURIComponent(l.location.hash.slice(1)),
+                decodeURIComponent(a.location.hash.slice(1)),
               );
           }, []),
           e.createElement(E, { demos: m })
@@ -123,15 +123,15 @@
         };
       r.Z = function (d) {
         var E = d.identifier,
-          l = d.export,
-          a = (0, n.useApiData)(E),
+          a = d.export,
+          l = (0, n.useApiData)(E),
           m = (0, e.useContext)(n.context),
-          c = m.locale,
-          i = /^zh|cn$/i.test(c) ? o['zh-CN'] : o['en-US'];
+          i = m.locale,
+          u = /^zh|cn$/i.test(i) ? o['zh-CN'] : o['en-US'];
         return e.createElement(
           e.Fragment,
           null,
-          a &&
+          l &&
             e.createElement(
               'table',
               { style: { marginTop: 24 } },
@@ -141,25 +141,25 @@
                 e.createElement(
                   'tr',
                   null,
-                  e.createElement('th', null, i.name),
-                  e.createElement('th', null, i.description),
-                  e.createElement('th', null, i.type),
-                  e.createElement('th', null, i.default),
+                  e.createElement('th', null, u.name),
+                  e.createElement('th', null, u.description),
+                  e.createElement('th', null, u.type),
+                  e.createElement('th', null, u.default),
                 ),
               ),
               e.createElement(
                 'tbody',
                 null,
-                a[l].map(function (u) {
+                l[a].map(function (c) {
                   return e.createElement(
                     'tr',
-                    { key: u.identifier },
-                    e.createElement('td', null, u.identifier),
-                    e.createElement('td', null, u.description || '--'),
+                    { key: c.identifier },
+                    e.createElement('td', null, c.identifier),
+                    e.createElement('td', null, c.description || '--'),
                     e.createElement(
                       'td',
                       null,
-                      e.createElement('code', null, u.type),
+                      e.createElement('code', null, c.type),
                     ),
                     e.createElement(
                       'td',
@@ -167,7 +167,7 @@
                       e.createElement(
                         'code',
                         null,
-                        u.default || (u.required && i.required) || '--',
+                        c.default || (c.required && u.required) || '--',
                       ),
                     ),
                   );

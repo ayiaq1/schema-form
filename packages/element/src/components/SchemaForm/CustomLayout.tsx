@@ -5,8 +5,8 @@
  * @LastModifiedBy: yihuang
  */
 import React, { Fragment, memo } from 'react';
-import { FormProps } from 'antd/lib/form';
-import { ISchemaProps, IFormItem } from './typings';
+import type { FormProps } from 'antd/lib/form';
+import type { ISchemaProps, IFormItem } from './typings';
 import ItemWrap from './ItemWrap';
 import ItemGroupWrap from './ItemGroupWrap';
 

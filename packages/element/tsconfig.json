@@ -7,21 +7,9 @@
     "typeRoots": ["node_modules/@types"],
     "skipLibCheck": true,
     "baseUrl": "./",
-    "rootDir": "./src",
-    "outDir": "./lib",
-    "paths": {
-      "@/*": ["src/*"]
-    }
+    "rootDir": "./",
+    "outDir": "./lib"
   },
-  "include": [
-    "src/**/*",
-    "../example/**/*",
-    "../__test__/**/*",
-    "../tests/**/*",
-    "typings/**/*",
-    "typings.d.ts",
-    ".eslintrc.js",
-    "*.config.js"
-  ],
+  "include": ["src/**/*", "typings.ts", "tests/**/*", "__test__/**/*", "example/**/*"],
   "exclude": ["node_modules", "dist", "lib"]
 }

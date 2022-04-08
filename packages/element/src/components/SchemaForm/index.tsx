@@ -1,7 +1,7 @@
 import React, { memo } from 'react';
 import { Form } from 'antd';
-import { FormProps } from 'antd/lib/form';
-import { ISchemaProps } from './typings';
+import type { FormProps } from 'antd/lib/form';
+import type { ISchemaProps } from './typings';
 import RowLayout from './RowLayout';
 import CustomLayout from './CustomLayout';
 

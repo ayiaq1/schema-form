@@ -1,8 +1,8 @@
-(self.webpackChunk_test_element_form =
-  self.webpackChunk_test_element_form || []).push([
-  [746],
+(self.webpackChunk_test_schema_form =
+  self.webpackChunk_test_schema_form || []).push([
+  [892],
   {
-    73602: function (s, r, t) {
+    73602: function (E, r, t) {
       'use strict';
       t.d(r, {
         m: function () {
@@ -12,16 +12,16 @@
       var e = t(67624),
         n = t(93142);
     },
-    68989: function (s, r, t) {
+    4179: function (E, r, t) {
       'use strict';
       t.r(r);
       var e = t(67294),
         n = t(16924),
-        d = t(44663),
-        o = t(25016),
-        E = e.memo((l) => {
-          var a = l.demos,
-            i = a['element-elementdemo'].component;
+        o = t(44663),
+        d = t(25016),
+        s = e.memo((a) => {
+          var l = a.demos,
+            c = l['element-schemademocustom'].component;
           return e.createElement(
             e.Fragment,
             null,
@@ -33,19 +33,33 @@
                 { className: 'markdown' },
                 e.createElement(
                   'h1',
-                  { id: 'element' },
+                  { id: 'custom' },
                   e.createElement(
                     n.AnchorLink,
-                    { to: '#element', 'aria-hidden': 'true', tabIndex: -1 },
+                    { to: '#custom', 'aria-hidden': 'true', tabIndex: -1 },
                     e.createElement('span', { className: 'icon icon-link' }),
                   ),
-                  'Element',
+                  'Custom',
+                ),
+                e.createElement(
+                  'h2',
+                  { id: '\u81EA\u5B9A\u4E49\u5E03\u5C40-custom' },
+                  e.createElement(
+                    n.AnchorLink,
+                    {
+                      to: '#\u81EA\u5B9A\u4E49\u5E03\u5C40-custom',
+                      'aria-hidden': 'true',
+                      tabIndex: -1,
+                    },
+                    e.createElement('span', { className: 'icon icon-link' }),
+                  ),
+                  '\u81EA\u5B9A\u4E49\u5E03\u5C40: custom',
                 ),
               ),
               e.createElement(
-                o.default,
-                a['element-elementdemo'].previewerProps,
-                e.createElement(i, null),
+                d.default,
+                l['element-schemademocustom'].previewerProps,
+                e.createElement(c, null),
               ),
               e.createElement(
                 'div',
@@ -60,7 +74,7 @@
                   ),
                   'API',
                 ),
-                e.createElement(d.Z, {
+                e.createElement(o.Z, {
                   src: '../../packages/element/src/index.tsx',
                   identifier: 'element',
                   export: 'default',
@@ -69,29 +83,29 @@
             ),
           );
         });
-      r.default = (l) => {
-        var a = e.useContext(n.context),
-          i = a.demos;
+      r.default = (a) => {
+        var l = e.useContext(n.context),
+          c = l.demos;
         return (
           e.useEffect(() => {
-            var c;
-            l != null &&
-              (c = l.location) !== null &&
-              c !== void 0 &&
-              c.hash &&
+            var m;
+            a != null &&
+              (m = a.location) !== null &&
+              m !== void 0 &&
+              m.hash &&
               n.AnchorLink.scrollToAnchor(
-                decodeURIComponent(l.location.hash.slice(1)),
+                decodeURIComponent(a.location.hash.slice(1)),
               );
           }, []),
-          e.createElement(E, { demos: i })
+          e.createElement(s, { demos: c })
         );
       };
     },
-    44663: function (s, r, t) {
+    44663: function (E, r, t) {
       'use strict';
       var e = t(67294),
         n = t(16924),
-        d = {
+        o = {
           'zh-CN': {
             name: '\u5C5E\u6027\u540D',
             description: '\u63CF\u8FF0',
@@ -107,17 +121,17 @@
             required: '(required)',
           },
         };
-      r.Z = function (o) {
-        var E = o.identifier,
-          l = o.export,
-          a = (0, n.useApiData)(E),
-          i = (0, e.useContext)(n.context),
-          c = i.locale,
-          u = /^zh|cn$/i.test(c) ? d['zh-CN'] : d['en-US'];
+      r.Z = function (d) {
+        var s = d.identifier,
+          a = d.export,
+          l = (0, n.useApiData)(s),
+          c = (0, e.useContext)(n.context),
+          m = c.locale,
+          i = /^zh|cn$/i.test(m) ? o['zh-CN'] : o['en-US'];
         return e.createElement(
           e.Fragment,
           null,
-          a &&
+          l &&
             e.createElement(
               'table',
               { style: { marginTop: 24 } },
@@ -127,25 +141,25 @@
                 e.createElement(
                   'tr',
                   null,
-                  e.createElement('th', null, u.name),
-                  e.createElement('th', null, u.description),
-                  e.createElement('th', null, u.type),
-                  e.createElement('th', null, u.default),
+                  e.createElement('th', null, i.name),
+                  e.createElement('th', null, i.description),
+                  e.createElement('th', null, i.type),
+                  e.createElement('th', null, i.default),
                 ),
               ),
               e.createElement(
                 'tbody',
                 null,
-                a[l].map(function (m) {
+                l[a].map(function (u) {
                   return e.createElement(
                     'tr',
-                    { key: m.identifier },
-                    e.createElement('td', null, m.identifier),
-                    e.createElement('td', null, m.description || '--'),
+                    { key: u.identifier },
+                    e.createElement('td', null, u.identifier),
+                    e.createElement('td', null, u.description || '--'),
                     e.createElement(
                       'td',
                       null,
-                      e.createElement('code', null, m.type),
+                      e.createElement('code', null, u.type),
                     ),
                     e.createElement(
                       'td',
@@ -153,7 +167,7 @@
                       e.createElement(
                         'code',
                         null,
-                        m.default || (m.required && u.required) || '--',
+                        u.default || (u.required && i.required) || '--',
                       ),
                     ),
                   );

@@ -5,7 +5,7 @@ const Enzyme = require('enzyme');
 
 const Adapter =
   React.version.indexOf('16') > -1
-    ? require('enzyme-adapter-react-16') // eslint-disable-line import/no-extraneous-dependencies,import/no-unresolved
+    ? require('enzyme-adapter-react-16')
     : require('@wojtekmaj/enzyme-adapter-react-17');
 /** 需要全局注册 */
 Enzyme.configure({ adapter: new Adapter() });

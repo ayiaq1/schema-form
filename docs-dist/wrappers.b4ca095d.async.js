@@ -1,5 +1,5 @@
-(self.webpackChunk_test_element_form =
-  self.webpackChunk_test_element_form || []).push([
+(self.webpackChunk_test_schema_form =
+  self.webpackChunk_test_schema_form || []).push([
   [275],
   {
     73602: function (E, s, n) {
@@ -23,7 +23,7 @@
       var i = n(91896),
         x = n(67294),
         T = JSON.parse(
-          '{"menus":{"en-US":{"*":[{"path":"/","title":"element-form","meta":{"order":null}},{"title":"Guide","path":"/guide","meta":{},"children":[{"path":"/guide/element","title":"Element","meta":{}},{"path":"/guide/schema-form-custom","title":"Custom","meta":{}},{"path":"/guide/schema-form-row","title":"Row","meta":{}}]}]}},"locales":[{"name":"en-US","label":"English"}],"navs":{},"title":"element-form","mode":"doc","repository":{"url":"https://github.com/ayiaq1/schema-form","branch":"master"},"theme":{}}',
+          '{"menus":{"en-US":{"*":[{"path":"/","title":"schema-form","meta":{"order":null}},{"title":"Guide","path":"/guide","meta":{},"children":[{"path":"/guide/element","title":"Element","meta":{}},{"path":"/guide/schema-form-custom","title":"Custom","meta":{}},{"path":"/guide/schema-form-row","title":"Row","meta":{}}]}]}},"locales":[{"name":"en-US","label":"English"}],"navs":{},"title":"schema-form","mode":"doc","repository":{"url":"https://github.com/ayiaq1/schema-form","branch":"master"},"theme":{}}',
         ),
         l = n(3182),
         W = n(94043),
@@ -598,8 +598,8 @@ ListWrap.displayName = 'ListWrap';
 export default memo(ListWrap);`,
         y = `import React, { memo } from 'react';
 import { Form } from 'antd';
-import { FormProps } from 'antd/lib/form';
-import { ISchemaProps } from './typings';
+import type { FormProps } from 'antd/lib/form';
+import type { ISchemaProps } from './typings';
 import RowLayout from './RowLayout';
 import CustomLayout from './CustomLayout';
 
@@ -629,8 +629,8 @@ export default memo(SchemaForm);`,
  */
 import React, { memo } from 'react';
 import { Col, Row } from 'antd';
-import { FormProps } from 'antd/lib/form';
-import { ISchemaProps } from './typings';
+import type { FormProps } from 'antd/lib/form';
+import type { ISchemaProps } from './typings';
 import ItemGroupWrap from './ItemGroupWrap';
 import ItemWrap from './ItemWrap';
 import omit from 'omit.js';
@@ -676,7 +676,8 @@ export default memo(RowLayout);`,
  * @Description: \u8282\u70B9\u7EC4\u7684\u5305\u88F9\u5668
  * @LastModifiedBy: yihuang
  */
-import React, { CSSProperties, memo } from 'react';
+import React, { memo } from 'react';
+import type { CSSProperties } from 'react';
 import ItemWrap from './ItemWrap';
 import type { IFormInheritProps, IFormItem } from './typings';
 
@@ -712,7 +713,7 @@ export default memo(ItemGroupWrap);`,
  */
 import React, { memo } from 'react';
 import { Form } from 'antd';
-import { IItemWrapProps } from './typings';
+import type { IItemWrapProps } from './typings';
 import { Element } from '../../index';
 import RenderWrap from './RenderWrap';
 
@@ -767,7 +768,7 @@ export default memo(ItemWrap);`,
  * @LastModifiedBy: yihuang
  */
 import React, { useEffect, useState } from 'react';
-import { ISchemaChildrenProps } from './typings';
+import type { ISchemaChildrenProps } from './typings';
 import { converChangeEvent } from './utils';
 
 interface IProps extends ISchemaChildrenProps {
@@ -810,8 +811,8 @@ export default RenderWrap;`,
  * @LastModifiedBy: yihuang
  */
 import React, { Fragment, memo } from 'react';
-import { FormProps } from 'antd/lib/form';
-import { ISchemaProps, IFormItem } from './typings';
+import type { FormProps } from 'antd/lib/form';
+import type { ISchemaProps, IFormItem } from './typings';
 import ItemWrap from './ItemWrap';
 import ItemGroupWrap from './ItemGroupWrap';
 

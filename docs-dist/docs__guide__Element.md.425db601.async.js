@@ -1,6 +1,6 @@
-(self.webpackChunk_test_element_form =
-  self.webpackChunk_test_element_form || []).push([
-  [53],
+(self.webpackChunk_test_schema_form =
+  self.webpackChunk_test_schema_form || []).push([
+  [746],
   {
     73602: function (s, r, t) {
       'use strict';
@@ -12,16 +12,16 @@
       var e = t(67624),
         n = t(93142);
     },
-    65788: function (s, r, t) {
+    68989: function (s, r, t) {
       'use strict';
       t.r(r);
       var e = t(67294),
         n = t(16924),
-        o = t(44663),
-        d = t(25016),
+        d = t(44663),
+        o = t(25016),
         E = e.memo((l) => {
           var a = l.demos,
-            c = a['element-schemademorow'].component;
+            c = a['element-elementdemo'].component;
           return e.createElement(
             e.Fragment,
             null,
@@ -33,32 +33,18 @@
                 { className: 'markdown' },
                 e.createElement(
                   'h1',
-                  { id: 'row' },
+                  { id: 'element' },
                   e.createElement(
                     n.AnchorLink,
-                    { to: '#row', 'aria-hidden': 'true', tabIndex: -1 },
+                    { to: '#element', 'aria-hidden': 'true', tabIndex: -1 },
                     e.createElement('span', { className: 'icon icon-link' }),
                   ),
-                  'Row',
-                ),
-                e.createElement(
-                  'h2',
-                  { id: 'row-\u5E03\u5C40' },
-                  e.createElement(
-                    n.AnchorLink,
-                    {
-                      to: '#row-\u5E03\u5C40',
-                      'aria-hidden': 'true',
-                      tabIndex: -1,
-                    },
-                    e.createElement('span', { className: 'icon icon-link' }),
-                  ),
-                  'Row \u5E03\u5C40',
+                  'Element',
                 ),
               ),
               e.createElement(
-                d.default,
-                a['element-schemademorow'].previewerProps,
+                o.default,
+                a['element-elementdemo'].previewerProps,
                 e.createElement(c, null),
               ),
               e.createElement(
@@ -74,7 +60,7 @@
                   ),
                   'API',
                 ),
-                e.createElement(o.Z, {
+                e.createElement(d.Z, {
                   src: '../../packages/element/src/index.tsx',
                   identifier: 'element',
                   export: 'default',
@@ -105,7 +91,7 @@
       'use strict';
       var e = t(67294),
         n = t(16924),
-        o = {
+        d = {
           'zh-CN': {
             name: '\u5C5E\u6027\u540D',
             description: '\u63CF\u8FF0',
@@ -121,13 +107,13 @@
             required: '(required)',
           },
         };
-      r.Z = function (d) {
-        var E = d.identifier,
-          l = d.export,
+      r.Z = function (o) {
+        var E = o.identifier,
+          l = o.export,
           a = (0, n.useApiData)(E),
           c = (0, e.useContext)(n.context),
           i = c.locale,
-          u = /^zh|cn$/i.test(i) ? o['zh-CN'] : o['en-US'];
+          u = /^zh|cn$/i.test(i) ? d['zh-CN'] : d['en-US'];
         return e.createElement(
           e.Fragment,
           null,

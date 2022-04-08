@@ -5,7 +5,7 @@
  * @LastModifiedBy: yihuang
  */
 import React, { useEffect, useState } from 'react';
-import { ISchemaChildrenProps } from './typings';
+import type { ISchemaChildrenProps } from './typings';
 import { converChangeEvent } from './utils';
 
 interface IProps extends ISchemaChildrenProps {

@@ -9,7 +9,7 @@
     "sourceMap": true,
     "baseUrl": ".",
     "paths": {
-      "element-form/*": ["packages/element//*"]
+      "schema-form/*": ["packages/element//*"]
     },
     "allowSyntheticDefaultImports": true,
     "skipLibCheck": true,

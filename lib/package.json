@@ -1,5 +1,5 @@
 {
-  "name": "@test/element-form",
+  "name": "@test/schema-form",
   "version": "0.0.1",
   "description": "给开发者用的schema form（基于antd-react）",
   "repository": {

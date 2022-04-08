@@ -6,8 +6,8 @@
  */
 import React, { memo } from 'react';
 import { Col, Row } from 'antd';
-import { FormProps } from 'antd/lib/form';
-import { ISchemaProps } from './typings';
+import type { FormProps } from 'antd/lib/form';
+import type { ISchemaProps } from './typings';
 import ItemGroupWrap from './ItemGroupWrap';
 import ItemWrap from './ItemWrap';
 import omit from 'omit.js';

@@ -1,5 +1,5 @@
-(self.webpackChunk_test_element_form =
-  self.webpackChunk_test_element_form || []).push([
+(self.webpackChunk_test_schema_form =
+  self.webpackChunk_test_schema_form || []).push([
   [336],
   {
     73602: function (p, c, i) {
@@ -10,7 +10,7 @@
         },
       });
       var u = i(67624),
-        f = i(93142);
+        s = i(93142);
     },
     65466: function (p, c, i) {
       'use strict';
@@ -25,10 +25,10 @@
           e
         );
       }
-      function f() {
+      function s() {
         const e = i(16924);
         return (
-          (f = function () {
+          (s = function () {
             return e;
           }),
           e
@@ -37,28 +37,28 @@
       function m(e) {
         return e && e.__esModule ? e : { default: e };
       }
-      function l(e, n) {
+      function d(e, n) {
         var t = Object.keys(e);
         if (Object.getOwnPropertySymbols) {
           var r = Object.getOwnPropertySymbols(e);
           n &&
-            (r = r.filter(function (s) {
-              return Object.getOwnPropertyDescriptor(e, s).enumerable;
+            (r = r.filter(function (f) {
+              return Object.getOwnPropertyDescriptor(e, f).enumerable;
             })),
             t.push.apply(t, r);
         }
         return t;
       }
-      function d(e) {
+      function l(e) {
         for (var n = 1; n < arguments.length; n++) {
           var t = arguments[n] != null ? arguments[n] : {};
           n % 2
-            ? l(Object(t), !0).forEach(function (r) {
+            ? d(Object(t), !0).forEach(function (r) {
                 _(e, r, t[r]);
               })
             : Object.getOwnPropertyDescriptors
             ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t))
-            : l(Object(t)).forEach(function (r) {
+            : d(Object(t)).forEach(function (r) {
                 Object.defineProperty(
                   e,
                   r,
@@ -82,14 +82,14 @@
         );
       }
       const O = (e) => e.render();
-      var P = (e, n) => {
+      var h = (e, n) => {
         let t = [];
         const r = e.match.params.uuid,
-          s = e.location.query.wrapper === void 0,
+          f = e.location.query.wrapper === void 0,
           a = n[r];
         if (a) {
-          const o = d(
-            d({}, a.previewerProps),
+          const o = l(
+            l({}, a.previewerProps),
             {},
             {
               hideActions: (a.previewerProps.hideActions || []).concat([
@@ -100,13 +100,13 @@
           e.location.query.capture !== void 0 &&
             ((o.motions = (o.motions || []).slice()),
             o.motions.unshift('autoplay'),
-            o.motions.every((h) => !h.startsWith('capture')) &&
+            o.motions.every((P) => !P.startsWith('capture')) &&
               o.motions.push('capture:[id|=root]')),
-            s
+            f
               ? (t = [
                   u().default.createElement(O, {
                     render: () => (
-                      (0, f().useMotions)(
+                      (0, s().useMotions)(
                         o.motions || [],
                         typeof window != 'undefined'
                           ? document.documentElement
@@ -124,7 +124,7 @@
         }
         return t;
       };
-      c.default = P;
+      c.default = h;
     },
   },
 ]);

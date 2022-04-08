@@ -74,13 +74,13 @@ export function getRoutes() {
           "slugs": [
             {
               "depth": 1,
-              "value": "element-form",
-              "heading": "element-form"
+              "value": "schema-form",
+              "heading": "schema-form"
             }
           ],
-          "title": "element-form"
+          "title": "schema-form"
         },
-        "title": "element-form"
+        "title": "schema-form"
       },
       {
         "path": "/guide/element",
@@ -108,7 +108,7 @@ export function getRoutes() {
             "title": "Guide"
           }
         },
-        "title": "Element - element-form"
+        "title": "Element - schema-form"
       },
       {
         "path": "/guide/schema-form-custom",
@@ -141,7 +141,7 @@ export function getRoutes() {
             "title": "Guide"
           }
         },
-        "title": "Custom - element-form"
+        "title": "Custom - schema-form"
       },
       {
         "path": "/guide/schema-form-row",
@@ -174,7 +174,7 @@ export function getRoutes() {
             "title": "Guide"
           }
         },
-        "title": "Row - element-form"
+        "title": "Row - schema-form"
       },
       {
         "path": "/guide",
@@ -183,7 +183,7 @@ export function getRoutes() {
         "redirect": "/guide/element"
       }
     ],
-    "title": "element-form",
+    "title": "schema-form",
     "component": (props) => props.children
   }
 ];

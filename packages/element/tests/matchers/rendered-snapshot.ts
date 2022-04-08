@@ -1,5 +1,5 @@
 import { render } from 'enzyme';
-import { ReactElement } from 'react';
+import type { ReactElement } from 'react';
 
 export default function toMatchRenderedSnapshot(
   this: jest.MatcherUtils,
@@ -12,9 +12,9 @@ export default function toMatchRenderedSnapshot(
       message: () => 'expected JSX not to match snapshot',
       pass: true,
     };
-  } catch (e) {
+  } catch {
     return {
-      message: (e) => `expected JSX to match snapshot: ${e.message}`,
+      message: (e: any) => `expected JSX to match snapshot: ${e.message}`,
       pass: false,
     };
   }

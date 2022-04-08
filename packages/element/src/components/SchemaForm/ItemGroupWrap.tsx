@@ -4,7 +4,8 @@
  * @Description: 节点组的包裹器
  * @LastModifiedBy: yihuang
  */
-import React, { CSSProperties, memo } from 'react';
+import React, { memo } from 'react';
+import type { CSSProperties } from 'react';
 import ItemWrap from './ItemWrap';
 import type { IFormInheritProps, IFormItem } from './typings';
 
