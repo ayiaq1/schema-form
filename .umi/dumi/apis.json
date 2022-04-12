@@ -8,7 +8,7 @@
       },
       {
         "identifier": "mode",
-        "description": "模式类型",
+        "description": "模式类型 type ModeType = 'read' | 'edit'",
         "type": "ModeType"
       },
       {
@@ -26,6 +26,7 @@
       },
       {
         "identifier": "render",
+        "description": "type=custom时，使用的自定义渲染",
         "type": "unknown"
       },
       {

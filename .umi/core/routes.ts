@@ -70,12 +70,67 @@ export function getRoutes() {
           "locale": "en-US",
           "order": null,
           "filePath": "README.md",
-          "updatedTime": 1649321772000,
+          "updatedTime": 1649763914000,
           "slugs": [
             {
               "depth": 1,
               "value": "schema-form",
               "heading": "schema-form"
+            },
+            {
+              "depth": 2,
+              "value": "给开发者用的表单工具（基于 Ant Design React）",
+              "heading": "给开发者用的表单工具基于-ant-design-react"
+            },
+            {
+              "depth": 6,
+              "value": "SchemaForm 组件",
+              "heading": "schemaform-组件"
+            },
+            {
+              "depth": 6,
+              "value": "也可以单独使用的元素组件",
+              "heading": "也可以单独使用的元素组件"
+            },
+            {
+              "depth": 2,
+              "value": "整体结构图",
+              "heading": "整体结构图"
+            },
+            {
+              "depth": 2,
+              "value": "Element 作为元素组件的适配层而存在，也可以单独引入使用",
+              "heading": "element-作为元素组件的适配层而存在也可以单独引入使用"
+            },
+            {
+              "depth": 2,
+              "value": "API:SchemaForm 包裹 Form 的组件",
+              "heading": "apischemaform-包裹-form-的组件"
+            },
+            {
+              "depth": 3,
+              "value": "API: SchemaForm.type=row 类型为 row 时的参数",
+              "heading": "api-schemaformtyperow-类型为-row-时的参数"
+            },
+            {
+              "depth": 3,
+              "value": "API: SchemaForm.options 渲染列表，包裹 Form.Item 的数组",
+              "heading": "api-schemaformoptions-渲染列表包裹-formitem-的数组"
+            },
+            {
+              "depth": 3,
+              "value": "API:Element.type Element 组件的 type 枚举",
+              "heading": "apielementtype-element-组件的-type-枚举"
+            },
+            {
+              "depth": 3,
+              "value": "API:SchemaForm.options.type SchemaForm 组件的 Item.type 枚举",
+              "heading": "apischemaformoptionstype-schemaform-组件的-itemtype-枚举"
+            },
+            {
+              "depth": 3,
+              "value": "单页测试覆盖率",
+              "heading": "单页测试覆盖率"
             }
           ],
           "title": "schema-form"
@@ -88,7 +143,7 @@ export function getRoutes() {
         "exact": true,
         "meta": {
           "filePath": "docs/guide/Element.md",
-          "updatedTime": 1649331186648,
+          "updatedTime": 1649334684000,
           "slugs": [
             {
               "depth": 1,
@@ -116,7 +171,7 @@ export function getRoutes() {
         "exact": true,
         "meta": {
           "filePath": "docs/guide/SchemaFormCustom.md",
-          "updatedTime": 1649331468720,
+          "updatedTime": 1649334684000,
           "slugs": [
             {
               "depth": 1,
@@ -149,7 +204,7 @@ export function getRoutes() {
         "exact": true,
         "meta": {
           "filePath": "docs/guide/SchemaFormRow.md",
-          "updatedTime": 1649331358787,
+          "updatedTime": 1649334684000,
           "slugs": [
             {
               "depth": 1,

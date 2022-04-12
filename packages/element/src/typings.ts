@@ -35,7 +35,7 @@ import type { SliderRangeProps, SliderSingleProps } from 'antd/lib/slider';
 import type { CSSProperties } from 'react';
 import type { IFormItem, ISchemaChildrenProps } from './components/SchemaForm/typings';
 
-/** 模式  只读，编辑 */
+/** 'read' | 'edit' */
 export type ModeType = 'read' | 'edit';
 /** 自定义 */
 export type ICustom = 'custom';
@@ -101,7 +101,7 @@ export type EnumType = EnumElementType | ICustom;
 export interface IProps {
   /** props 传入的值 */
   value?: string | string[];
-  /** 模式类型 */
+  /** 模式类型 'read' | 'edit' */
   mode?: 'edit' | ModeType;
   /** 超长省略 true */
   ellipsis?: true | boolean;
@@ -109,7 +109,9 @@ export interface IProps {
   className?: string;
   /** 继承的类去定义 */
   type?: EnumType;
+  /** 根据type自动推导 */
   fieldProps?: unknown;
+  /** type=custom时，使用的自定义渲染 */
   render?: unknown;
   /** form传入的 */
   onChange?: (val?: any) => void;

@@ -4,6 +4,8 @@
 
 **基于 Ant Design React 而开发的适配组件，尽量使用数据来替代元素标签。**
 
+[在线 Demo](https://ayiaq1.github.io/schema-form/)
+
 ###### SchemaForm 组件
 
 ```
@@ -29,8 +31,6 @@
 <Element type="text" value="test text" />
 ```
 
-[Demo 地址](https://ayiaq1.github.io/schema-form/)
-
 ## 整体结构图
 
 ```mermaid
@@ -54,8 +54,8 @@ graph TB
 ## API:SchemaForm 包裹 Form 的组件
 
 | 参数          | 描述                                                 | 类型                | 默认值 |
-| ------------- | ---------------------------------------------------- | ------------------- | :----- | --- |
-| type          | 设置布局样式。row：使用 Row 包裹。custom: 直接渲染。 | row                 | custom | -   |
+| ------------- | ---------------------------------------------------- | ------------------- | :----- |
+| type          | 设置布局样式。row：使用 Row 包裹。custom: 直接渲染。 | row                 | custom |
 | disabled      | 是否禁用，如果 item 有，以 item 的为结果             | boolean             | -      |
 | options       | 渲染列表                                             | IFormItem[]         | -      |
 | form          | 外部传入的：`Form.useForm()`                         | FormInstance        | -      |
@@ -121,3 +121,5 @@ graph TB
 | custom       | 自定义渲染组件               | `(props: ISchemaChildrenProps) => React.ReactNode` | -      |
 
 ### 单页测试覆盖率
+
+![jest-coverage](https://raw.githubusercontent.com/ayiaq1/schema-form/main/images/jest-coverage.png)
