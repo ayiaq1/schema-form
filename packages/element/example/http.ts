@@ -1,6 +1,6 @@
 // https://developer.mozilla.org/zh-CN/docs/Web/API/Fetch_API/Using_Fetch
 // Example POST method implementation:
-async function http(url = '', data = {}, method) {
+async function http(url = '', data = {}, method?: string) {
   // Default options are marked with *
   const response = await fetch(url, {
     method, // *GET, POST, PUT, DELETE, etc.

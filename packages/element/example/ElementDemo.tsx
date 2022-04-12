@@ -5,8 +5,8 @@
  * @LastModifiedBy: yihuang
  */
 import React, { useState, useMemo } from 'react';
-import { Form, Radio, Button, Space, Input, Divider, Card } from 'antd';
-import { ModeType } from '../src/typings';
+import { Form, Radio, Button, Space, Card } from 'antd';
+import type { ModeType } from '../src/typings';
 import { useRequest } from 'ahooks';
 import { getDetails } from './service';
 import { Element } from '../src';
@@ -34,96 +34,58 @@ const Index = () => {
     console.log('form.values', form.getFieldsValue());
   };
   return (
-    <>
-      <Card title="antd form">
-        <Form
-          form={antForm}
-          onValuesChange={(e) => {
-            console.log('antd form onValuesChange=>', e);
+    <Card title="element form">
+      <Radio.Group value={value} onChange={(e) => setValue(e.target.value)}>
+        <Radio value="read">只读</Radio>
+        <Radio value="edit">编辑</Radio>
+      </Radio.Group>
+      <Form
+        form={form}
+        initialValues={{
+          text: '静态文案',
+          textEllipsis: str,
+          textList: [str, str, str],
+        }}
+        onValuesChange={(e) => {
+          console.log('element form onValuesChange=>', e);
+        }}
+      >
+        <Item label="text" name="text">
+          <Element type={type as any} />
+        </Item>
+        <Item
+          label="text-edit"
+          name="textEllipsis"
+          style={{
+            width: '300px',
           }}
         >
-          <Item label="inp" name="inp">
-            <Input />
-          </Item>
-          <Item
-            style={{
-              width: '400px',
-            }}
-          >
-            <Space>
-              <Button
-                type="primary"
-                onClick={() => {
-                  console.log('antd submit', antForm.getFieldsValue());
-                }}
-              >
-                提交
-              </Button>
-              <Button
-                onClick={() => {
-                  console.log('antd reset', antForm.getFieldsValue());
-                }}
-              >
-                重置
-              </Button>
-            </Space>
-          </Item>
-        </Form>
-      </Card>
-      <Divider />
-      <Card title="element form">
-        <Radio.Group value={value} onChange={(e) => setValue(e.target.value)}>
-          <Radio value="read">只读</Radio>
-          <Radio value="edit">编辑</Radio>
-        </Radio.Group>
-        <Form
-          form={form}
-          initialValues={{
-            text: '静态文案',
-            textEllipsis: str,
-            textList: [str, str, str],
-          }}
-          onValuesChange={(e) => {
-            console.log('element form onValuesChange=>', e);
+          <Element type={type as any} ellipsis={true} />
+        </Item>
+        <Item
+          label="text-list"
+          name="textList"
+          style={{
+            width: '400px',
           }}
         >
-          <Item label="text" name="text">
-            <Element type={type as any} />
-          </Item>
-          <Item
-            label="text-edit"
-            name="textEllipsis"
-            style={{
-              width: '300px',
-            }}
-          >
-            <Element type={type as any} ellipsis={true} />
-          </Item>
-          <Item
-            label="text-list"
-            name="textList"
-            style={{
-              width: '400px',
-            }}
-          >
-            <Element type="list-wrap" mode={value} ellipsis={true} />
-          </Item>
+          <Element type="list-wrap" mode={value} ellipsis={true} />
+        </Item>
 
-          <Item
-            style={{
-              width: '400px',
-            }}
-          >
-            <Space>
-              <Button type="primary" onClick={onSubmit}>
-                提交
-              </Button>
-              <Button onClick={onReset}>重置</Button>
-            </Space>
-          </Item>
-        </Form>
-      </Card>
-    </>
+        <Item
+          style={{
+            width: '400px',
+          }}
+        >
+          <Space>
+            <Button type="primary" onClick={onSubmit}>
+              提交
+            </Button>
+            <Button onClick={onReset}>重置</Button>
+          </Space>
+        </Item>
+      </Form>
+    </Card>
   );
 };
 

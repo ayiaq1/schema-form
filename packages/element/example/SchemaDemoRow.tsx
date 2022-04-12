@@ -7,7 +7,7 @@
 import React, { useState, useCallback } from 'react';
 import { UserOutlined, UploadOutlined, SyncOutlined } from '@ant-design/icons';
 import { Button, Space, Form } from 'antd';
-import { disabledRangeTime, disabledDate } from './utils';
+import { disabledRangeTime } from './utils';
 import { SchemaForm, Element } from '../src';
 import { CascaderOptions, initValues, TreeData } from './config';
 import moment from 'moment';

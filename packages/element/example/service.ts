@@ -1,4 +1,4 @@
-import { post, get } from './http';
+import { get } from './http';
 
 export const getDetails = async () => {
   return get('/api/getInfo');

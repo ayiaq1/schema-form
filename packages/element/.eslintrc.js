@@ -3,6 +3,7 @@ module.exports = {
   rules: {
     '@typescript-eslint/unified-signatures': 'off',
     '@typescript-eslint/no-unused-vars': 'off',
+    'react/no-array-index-key': 'off',
   },
   parserOptions: {
     project: './packages/element/tsconfig.json',

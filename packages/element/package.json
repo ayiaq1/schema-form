@@ -14,9 +14,7 @@
     "@ant-design/icons": ">=4.0.0",
     "antd": ">=4.0.0",
     "classnames": "^2.2.6",
-    "omit.js": "^2.0.2",
-    "react": ">=16.9.0",
-    "react-dom": ">=16.9.0"
+    "omit.js": "^2.0.2"
   },
   "devDependencies": {
     "@ant-design/icons": ">=4.0.0",
@@ -28,12 +26,12 @@
     "@types/mocha": "^9.1.0",
     "@types/node": "^17.0.21",
     "@types/pretty": "^2.0.1",
-    "@types/react": "^16.14.0",
-    "@types/react-dom": "^16.9.8",
+    "@types/react": "^17.0.2",
+    "@types/react-dom": "^17.0.2",
     "@types/react-test-renderer": "^17.0.1",
     "@wojtekmaj/enzyme-adapter-react-17": "^0.6.6",
-    "react": "^16.9.0",
-    "react-dom": "^16.9.0",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
     "ahooks": "^3.1.9",
     "antd": "^4.17.0",
     "enzyme": "^3.11.0",

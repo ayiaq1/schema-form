@@ -63,8 +63,6 @@ export interface IBaseItem {
   disabled?: boolean;
   /** 只有custom类型 才有的渲染children方法 */
   render?: (props: ISchemaChildrenProps) => React.ReactNode;
-  /** form.item 的包裹器。可以为item套一层外壳 */
-  itemWraper?: () => React.ReactNode;
   /** 透传组件参数 */
   fieldProps?: unknown;
   /** col 的占位,如果item有。以item为结果 */
@@ -206,7 +204,7 @@ export interface ISchemaBaseProps {
   /** 是否禁用，如果item有，以item的为结果 */
   disabled?: boolean;
   type: 'row' | 'custom';
-  /** 布局类型 row: 使用默认的 Row 布局，custom: 可以增加group混合布局。 */
+  /** 布局类型 row: 使用默认的 Row 布局，custom: 直接渲染。 */
   /** 渲染列表 */
   options: IFormItem[];
   /** Form.useForm() */
