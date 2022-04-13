@@ -8,7 +8,7 @@
 
 ```
 
-npm i @dawdler/schema-form
+npm install -D @dawdler/schema-form
 
 ```
 
@@ -81,20 +81,20 @@ graph TB
 
 ## Element 作为元素组件的适配层而存在，也可以单独引入使用
 
-````mermaid
+```mermaid
 graph TB
     Element(Element适配层,支持的类型) --> type[type]
     type --> |text| Text[Text]
     type --> |input| InputWrap[InputWrap:增加了Input的过滤空格功能]
     type --> |list-wrap| ListWrap[ListWrap]
-    type --> |other| Ant的类型推导,详见:```API:Element.type```
-````
+    type --> |other| Ant的类型推导,详见API:Element.type
+```
 
 ## API:SchemaForm 包裹 Form 的组件
 
 | 参数          | 描述                                                 | 类型                | 默认值 |
 | ------------- | ---------------------------------------------------- | ------------------- | :----- |
-| type          | 设置布局样式。row：使用 Row 包裹。custom: 直接渲染。 | row                 | custom |
+| type          | 设置布局样式。row：使用 Row 包裹。custom: 直接渲染。 | boolean             | custom |
 | disabled      | 是否禁用，如果 item 有，以 item 的为结果             | boolean             | -      |
 | options       | 渲染列表                                             | IFormItem[]         | -      |
 | form          | 外部传入的：`Form.useForm()`                         | FormInstance        | -      |
@@ -121,35 +121,35 @@ graph TB
 
 ### API:Element.type Element 组件的 type 枚举
 
-| 支持的 type        | 描述（Ant 的类型推导几乎都是组件的小驼峰拼写：TimePicker.RangePicker -> timeRangePicker） |
-| ------------------ | ----------------------------------------------------------------------------------------- |
-| text               | 只读文本。设置宽度之后支持超长隐藏                                                        |
-| input              | 包裹 Ant 的 Input，增加了默认参数。详见: `API:Input`                                      |
-| list-wrap          | 列表组件，通过 mode 可以修改为只读、编辑状态                                              |
-| input-group        | Input.Group                                                                               |
-| textarea           | Input.TextArea                                                                            |
-| search             | Input.Search                                                                              |
-| password           | Input.Password                                                                            |
-| input-number       | InputNumber                                                                               |
-| select             | Select                                                                                    |
-| datepicker         | DatePicker（单个日期）                                                                    |
-| rangepicker        | DatePicker.RangePicker（日期区间）                                                        |
-| timePicker         | TimePicker（单个时间）                                                                    |
-| timeRangePicker    | TimePicker.RangePicker（时间区间）                                                        |
-| checkbox           | Checkbox                                                                                  |
-| checkbox-group     | Checkbox.Group                                                                            |
-| radio-group        | Radio.Group                                                                               |
-| rate               | Rate                                                                                      |
-| slider             | Slider                                                                                    |
-| switch             | Switch                                                                                    |
-| upload             | Upload                                                                                    |
-| avatar             | Avatar                                                                                    |
-| image              | Image                                                                                     |
-| tag                | Tag                                                                                       |
-| progress           | Progress                                                                                  |
-| tree-select        | TreeSelect                                                                                |
-| cascader           | Cascader                                                                                  |
-| 错误类型会抛出错误 | 没有找到对应的 type 类型                                                                  |
+| 支持的 type     | 描述（Ant 的类型推导几乎都是组件的小驼峰拼写：TimePicker.RangePicker -> timeRangePicker） |
+| --------------- | ----------------------------------------------------------------------------------------- |
+| text            | 只读文本。设置宽度之后支持超长隐藏                                                        |
+| input           | 包裹 Ant 的 Input，增加了默认参数。详见: `API:Input`                                      |
+| list-wrap       | 列表组件，通过 mode 可以修改为只读、编辑状态                                              |
+| input-group     | Input.Group                                                                               |
+| textarea        | Input.TextArea                                                                            |
+| search          | Input.Search                                                                              |
+| password        | Input.Password                                                                            |
+| input-number    | InputNumber                                                                               |
+| select          | Select                                                                                    |
+| datepicker      | DatePicker（单个日期）                                                                    |
+| rangepicker     | DatePicker.RangePicker（日期区间）                                                        |
+| timePicker      | TimePicker（单个时间）                                                                    |
+| timeRangePicker | TimePicker.RangePicker（时间区间）                                                        |
+| checkbox        | Checkbox                                                                                  |
+| checkbox-group  | Checkbox.Group                                                                            |
+| radio-group     | Radio.Group                                                                               |
+| rate            | Rate                                                                                      |
+| slider          | Slider                                                                                    |
+| switch          | Switch                                                                                    |
+| upload          | Upload                                                                                    |
+| avatar          | Avatar                                                                                    |
+| image           | Image                                                                                     |
+| tag             | Tag                                                                                       |
+| progress        | Progress                                                                                  |
+| tree-select     | TreeSelect                                                                                |
+| cascader        | Cascader                                                                                  |
+| 不匹配类型抛错  | `throw new Error`没有找到对应的 type 类型                                                 |
 
 ### API:SchemaForm.options.type SchemaForm 组件的 Item.type 枚举
 
