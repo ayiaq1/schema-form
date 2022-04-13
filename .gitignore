@@ -9,8 +9,9 @@ yarn.lock
 .umi
 .umi-production
 # production
-dist
-docs-dist
+/dist
+/docs-dist
+/lib
 *.tgz
 *.zip
 
@@ -26,4 +27,3 @@ docs-dist
 # ide
 .vscode
 .idea
-/lib

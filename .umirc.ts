@@ -1,15 +1,15 @@
 import { defineConfig } from 'dumi';
 
 const { getPackages } = require('./scripts/common');
+const packageJSON = require('./package.json');
 
-const appName = 'schema-form';
 const isProd = process.env.NODE_ENV === 'production';
 const doman = 'https://ayiaq1.github.io/schema-form/';
 const packages = getPackages().map((item) => {
   return `packages/${item}/src`;
 });
 export default defineConfig({
-  title: appName,
+  title: packageJSON.name,
   base: isProd ? doman : '/',
   publicPath: isProd ? doman : '/',
   mode: 'doc',
