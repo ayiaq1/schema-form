@@ -1,4 +1,4 @@
-(self.webpackChunk_test_schema_form=self.webpackChunk_test_schema_form||[]).push([[275],{73602:function(x,a,e){"use strict";e.d(a,{m:function(){return s.m}});var s=e(67624),H=e(93142)},27940:function(x,a,e){"use strict";e.r(a),e.d(a,{default:function(){return N}});var s=e(91896),H=e(67294),S=JSON.parse('{"menus":{"en-US":{"*":[{"path":"/","title":"schema-form","meta":{"order":null}},{"title":"Guide","path":"/guide","meta":{},"children":[{"path":"/guide/element","title":"Element","meta":{}},{"path":"/guide/schema-form-custom","title":"Custom","meta":{}},{"path":"/guide/schema-form-row","title":"Row","meta":{}}]}]}},"locales":[{"name":"en-US","label":"English"}],"navs":{},"title":"schema-form","mode":"doc","repository":{"url":"https://github.com/ayiaq1/schema-form","branch":"master"},"theme":{}}'),l=e(3182),w=e(94043),r=e.n(w),p=e(33761),D=`/*
+(self.webpackChunk_dawdler_schema_form_doc=self.webpackChunk_dawdler_schema_form_doc||[]).push([[275],{73602:function(x,a,e){"use strict";e.d(a,{m:function(){return s.m}});var s=e(67624),H=e(93142)},27940:function(x,a,e){"use strict";e.r(a),e.d(a,{default:function(){return N}});var s=e(91896),H=e(67294),S=JSON.parse('{"menus":{"en-US":{"*":[{"path":"/","title":"schema-form","meta":{"order":null}},{"title":"Guide","path":"/guide","meta":{},"children":[{"path":"/guide/element","title":"Element","meta":{}},{"path":"/guide/schema-form-custom","title":"Custom","meta":{}},{"path":"/guide/schema-form-row","title":"Row","meta":{}}]}]}},"locales":[{"name":"en-US","label":"English"}],"navs":{},"title":"schema-form","mode":"doc","repository":{"url":"https://github.com/ayiaq1/schema-form","branch":"master"},"theme":{}}'),l=e(3182),w=e(94043),r=e.n(w),p=e(33761),D=`/*
  * @Author: yihuang
  * @Date: 2021-10-09 11:58:48
  * @Description: \u539F\u5B50\u7EC4\u4EF6 - demo
@@ -129,7 +129,7 @@ import SchemaForm from './components/SchemaForm';
 
 export { Element, SchemaForm };
 
-export default Element;`,m=`/*
+export default SchemaForm;`,m=`/*
  * @Author: yihuang
  * @Date: 2022-02-16 10:42:13
  * @Description: \u7EC4\u4EF6\u7684\u9002\u914D\u5C42\uFF0C\u7528\u4E8E\u5224\u65AD\u4F7F\u7528\u4EC0\u4E48\u7C7B\u578B\u7684\u7EC4\u4EF6\u3002
