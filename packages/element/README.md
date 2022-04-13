@@ -4,15 +4,41 @@
 
 **基于 Ant Design React 而开发的适配组件，尽量使用数据来替代元素标签。**
 
+### 安装
+
+```
+
+npm i @dawdler/schema-form
+
+```
+
+### 文档
+
 [开发者文档+在线 Demo](https://ayiaq1.github.io/schema-form/)
 
-###### SchemaForm：2 种布局方式
+### 使用
+
+###### SchemaForm：type:row | custom 2 种布局方式
 
 ```
 import SchemaForm from '@dawdler/schema-form';
 
+/** row */
 <SchemaForm
   type="row"
+  gutter={16}
+  span={12}
+  options={[
+    {
+      label: '输入框',
+      type: 'input',
+    },
+  ]}
+/>
+
+/** custom */
+<SchemaForm
+  type="custom"
   options={[
     {
       label: '输入框',
@@ -22,20 +48,25 @@ import SchemaForm from '@dawdler/schema-form';
 />
 ```
 
-###### type:row
-
-![jest-coverage](https://raw.githubusercontent.com/ayiaq1/schema-form/main/images/row-layout.png)
-
-###### type:custom
-
-![jest-coverage](https://raw.githubusercontent.com/ayiaq1/schema-form/main/images/custom-layout.png)
-
 ###### 也可以单独使用的元素组件
 
 ```
 import { Element } from '@dawdler/schema-form';
+
 <Element type="input" value="123" onChange={(str) => console.log(str)} />
 ```
+
+### 参考
+
+###### SchemaForm **type:row**
+
+![jest-coverage](https://raw.githubusercontent.com/ayiaq1/schema-form/main/images/row-layout.png)
+
+###### SchemaForm **type:custom**
+
+![jest-coverage](https://raw.githubusercontent.com/ayiaq1/schema-form/main/images/custom-layout.png)
+
+###### element **mode: 'edit' | 'read'**
 
 ![jest-coverage](https://raw.githubusercontent.com/ayiaq1/schema-form/main/images/element-form.png)
 

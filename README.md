@@ -7,7 +7,9 @@
 ### 安装
 
 ```
-npm i el-tree-select
+
+npm i @dawdler/schema-form
+
 ```
 
 ### 文档
