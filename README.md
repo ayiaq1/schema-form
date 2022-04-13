@@ -4,7 +4,7 @@
 
 **基于 Ant Design React 而开发的适配组件，尽量使用数据来替代元素标签。**
 
-[在线 Demo](https://ayiaq1.github.io/schema-form/)
+[开发者文档+在线 Demo](https://ayiaq1.github.io/schema-form/)
 
 ###### SchemaForm 组件
 
@@ -42,14 +42,14 @@ graph TB
 
 ## Element 作为元素组件的适配层而存在，也可以单独引入使用
 
-```mermaid
+````mermaid
 graph TB
     Element(Element适配层,支持的类型) --> type[type]
     type --> |text| Text[Text]
     type --> |input| InputWrap[InputWrap:增加了Input的过滤空格功能]
     type --> |list-wrap| ListWrap[ListWrap]
-    type --> |other| Ant的类型推导,具体类型通过Api查询
-```
+    type --> |other| Ant的类型推导,详见:```API:Element.type```
+````
 
 ## API:SchemaForm 包裹 Form 的组件
 
@@ -77,7 +77,7 @@ graph TB
 | fieldProps | 透传组件参数。                                            | 以 type 自动推动组件类型                         | -      |
 | col        | `type:row`类型时，col 的占位,如果 item 有。以 item 为结果 | number                                           | -      |
 | width      | 铺满 item 宽度。默认：宽度 100%。auto: 使用默认组件宽度   | string                                           | -      |
-| type       | 联合类型，详见：`API.type`                                | IUnionType                                       | -      |
+| type       | 联合类型，详见：`API:SchemaForm.options.type`             | IUnionType                                       | -      |
 | other      | Ant 的 FormItemProps 参数                                 | FormItemProps                                    | -      |
 
 ### API:Element.type Element 组件的 type 枚举
@@ -120,6 +120,6 @@ graph TB
 | group        | 将 Item 作为一个组包裹       | string                                             | -      |
 | custom       | 自定义渲染组件               | `(props: ISchemaChildrenProps) => React.ReactNode` | -      |
 
-### 单页测试覆盖率
+### 逐步完善的单页测试
 
 ![jest-coverage](https://raw.githubusercontent.com/ayiaq1/schema-form/main/images/jest-coverage.png)

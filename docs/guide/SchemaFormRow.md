@@ -4,4 +4,4 @@
 
 <code defaultShowCode src="../../packages/element/example/SchemaDemoRow.tsx" />
 
-<API src="../../packages/element/src/index.tsx"></API>
+<API src="../../packages/element/src/components/SchemaForm/index.tsx"></API>

@@ -70,7 +70,7 @@ export function getRoutes() {
           "locale": "en-US",
           "order": null,
           "filePath": "README.md",
-          "updatedTime": 1649763914000,
+          "updatedTime": 1649765146000,
           "slugs": [
             {
               "depth": 1,
@@ -129,8 +129,8 @@ export function getRoutes() {
             },
             {
               "depth": 3,
-              "value": "单页测试覆盖率",
-              "heading": "单页测试覆盖率"
+              "value": "逐步完善的单页测试",
+              "heading": "逐步完善的单页测试"
             }
           ],
           "title": "schema-form"
