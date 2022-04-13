@@ -6,7 +6,7 @@
 
 [开发者文档+在线 Demo](https://ayiaq1.github.io/schema-form/)
 
-###### SchemaForm 组件
+###### SchemaForm：2 种布局方式
 
 ```
 <SchemaForm
@@ -25,11 +25,21 @@
 />
 ```
 
+###### type:row
+
+![jest-coverage](https://raw.githubusercontent.com/ayiaq1/schema-form/main/images/row-layout.png)
+
+###### type:custom
+
+![jest-coverage](https://raw.githubusercontent.com/ayiaq1/schema-form/main/images/custom-layout.png)
+
 ###### 也可以单独使用的元素组件
 
 ```
 <Element type="text" value="test text" />
 ```
+
+![jest-coverage](https://raw.githubusercontent.com/ayiaq1/schema-form/main/images/element-form.png)
 
 ## 整体结构图
 
