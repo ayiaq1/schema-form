@@ -1,5 +1,5 @@
 {
-  "name": "@test/schema-form",
+  "name": "@dawdler/schema-form",
   "version": "0.0.1",
   "description": "给开发者用的schema form（基于antd-react）",
   "repository": {
@@ -16,9 +16,6 @@
     "deploy": "npm run doc:build && gh-pages -d docs-dist",
     "prettier": "prettier --write \"**/*.{js,jsx,tsx,ts,less,md,json}\""
   },
-  "main": "dist/index.js",
-  "module": "dist/index.esm.js",
-  "typings": "dist/index.d.ts",
   "gitHooks": {
     "pre-commit": "lint-staged"
   },
@@ -61,6 +58,8 @@
     "yorkie": "^2.0.0"
   },
   "files": [
-    "element"
+    "lib",
+    "es",
+    "dist"
   ]
 }

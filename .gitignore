@@ -6,7 +6,8 @@ node_modules
 /yarn-error.log
 yarn.lock
 /package-lock.json
-
+.umi
+.umi-production
 # production
 dist
 docs-dist
@@ -26,6 +27,3 @@ docs-dist
 .vscode
 .idea
 /lib
-
-# npm run build 时自动写入packages 下的包名
-/element

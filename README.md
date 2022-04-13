@@ -6,7 +6,7 @@
 
 [开发者文档+在线 Demo](https://ayiaq1.github.io/schema-form/)
 
-###### SchemaForm：2 种布局方式
+### SchemaForm：2 种布局方式
 
 ```
 <SchemaForm
@@ -25,15 +25,15 @@
 />
 ```
 
-###### type:row
+### type:row
 
 ![jest-coverage](https://raw.githubusercontent.com/ayiaq1/schema-form/main/images/row-layout.png)
 
-###### type:custom
+### type:custom
 
 ![jest-coverage](https://raw.githubusercontent.com/ayiaq1/schema-form/main/images/custom-layout.png)
 
-###### 也可以单独使用的元素组件
+### 也可以单独使用的元素组件
 
 ```
 <Element type="text" value="test text" />
@@ -61,7 +61,7 @@ graph TB
     type --> |other| Ant的类型推导,详见:```API:Element.type```
 ````
 
-## API:SchemaForm 包裹 Form 的组件
+### API:SchemaForm 包裹 Form 的组件
 
 | 参数          | 描述                                                 | 类型                | 默认值 |
 | ------------- | ---------------------------------------------------- | ------------------- | :----- |
@@ -130,6 +130,6 @@ graph TB
 | group        | 将 Item 作为一个组包裹       | string                                             | -      |
 | custom       | 自定义渲染组件               | `(props: ISchemaChildrenProps) => React.ReactNode` | -      |
 
-### 逐步完善的单页测试
+## 逐步完善的单元测试
 
 ![jest-coverage](https://raw.githubusercontent.com/ayiaq1/schema-form/main/images/jest-coverage.png)

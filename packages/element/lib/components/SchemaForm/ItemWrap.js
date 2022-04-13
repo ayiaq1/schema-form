@@ -25,73 +25,69 @@ var __rest =
       }
     return t;
   };
-define(['require', 'exports', 'react', 'antd', '../../index', './RenderWrap'], function (
-  require,
-  exports,
-  react_1,
-  antd_1,
-  index_1,
-  RenderWrap_1,
-) {
-  'use strict';
-  Object.defineProperty(exports, '__esModule', { value: true });
-  var Item = antd_1.Form.Item;
-  var ItemWrap = function (_a) {
-    var formDisabled = _a.formDisabled,
-      initialValues = _a.initialValues,
-      values = _a.values,
-      render = _a.render,
-      type = _a.type,
-      _b = _a.width,
-      width = _b === void 0 ? '100%' : _b,
-      _c = _a.fieldProps,
-      fieldProps = _c === void 0 ? {} : _c,
-      reset = __rest(_a, [
-        'formDisabled',
-        'initialValues',
-        'values',
-        'render',
-        'type',
-        'width',
-        'fieldProps',
-      ]);
-    var _d = fieldProps,
-      disabled = _d.disabled,
-      resetFieldProps = __rest(_d, ['disabled']);
-    return react_1.default.createElement(
-      Item,
-      __assign({}, reset),
-      type === 'custom'
-        ? // 自定义的使用外部组件
-          react_1.default.createElement(
-            RenderWrap_1.default,
-            __assign({}, reset, {
-              fieldProps: resetFieldProps,
-              values: values,
-              render: render,
-              disabled: disabled !== null && disabled !== void 0 ? disabled : formDisabled,
-              initialValues: initialValues,
-            }),
-          )
-        : // 透传
-          react_1.default.createElement(
-            index_1.Element,
-            __assign(
-              {
-                style: ['checkbox', 'switch', 'tag'].includes(type) ? undefined : { width: width },
-              },
-              reset,
-              {
-                fieldProps: __assign(__assign({}, resetFieldProps), {
-                  value: values,
-                  disabled: disabled !== null && disabled !== void 0 ? disabled : formDisabled,
-                }),
-                type: type,
-              },
-            ),
+/*
+ * @Author: yihuang
+ * @Date: 2022-02-21 16:49:01
+ * @Description: item节点包裹器
+ * @LastModifiedBy: yihuang
+ */
+import React, { memo } from 'react';
+import { Form } from 'antd';
+import { Element } from '../../index';
+import RenderWrap from './RenderWrap';
+var Item = Form.Item;
+var ItemWrap = function (_a) {
+  var formDisabled = _a.formDisabled,
+    initialValues = _a.initialValues,
+    values = _a.values,
+    render = _a.render,
+    type = _a.type,
+    _b = _a.width,
+    width = _b === void 0 ? '100%' : _b,
+    _c = _a.fieldProps,
+    fieldProps = _c === void 0 ? {} : _c,
+    reset = __rest(_a, [
+      'formDisabled',
+      'initialValues',
+      'values',
+      'render',
+      'type',
+      'width',
+      'fieldProps',
+    ]);
+  var _d = fieldProps,
+    disabled = _d.disabled,
+    resetFieldProps = __rest(_d, ['disabled']);
+  return React.createElement(
+    Item,
+    __assign({}, reset),
+    type === 'custom'
+      ? // 自定义的使用外部组件
+        React.createElement(
+          RenderWrap,
+          __assign({}, reset, {
+            fieldProps: resetFieldProps,
+            values: values,
+            render: render,
+            disabled: disabled !== null && disabled !== void 0 ? disabled : formDisabled,
+            initialValues: initialValues,
+          }),
+        )
+      : // 透传
+        React.createElement(
+          Element,
+          __assign(
+            { style: ['checkbox', 'switch', 'tag'].includes(type) ? undefined : { width: width } },
+            reset,
+            {
+              fieldProps: __assign(__assign({}, resetFieldProps), {
+                value: values,
+                disabled: disabled !== null && disabled !== void 0 ? disabled : formDisabled,
+              }),
+              type: type,
+            },
           ),
-    );
-  };
-  exports.default = (0, react_1.memo)(ItemWrap);
-});
-//# sourceMappingURL=ItemWrap.js.map
+        ),
+  );
+};
+export default memo(ItemWrap);

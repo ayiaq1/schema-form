@@ -25,67 +25,64 @@ var __rest =
       }
     return t;
   };
-define(['require', 'exports', 'react', './ItemWrap', './ItemGroupWrap'], function (
-  require,
-  exports,
-  react_1,
-  ItemWrap_1,
-  ItemGroupWrap_1,
-) {
-  'use strict';
-  Object.defineProperty(exports, '__esModule', { value: true });
-  var CustomLayout = function (_a) {
-    var _b = _a.type,
-      type = _b === void 0 ? 'custom' : _b,
-      _c = _a.options,
-      options = _c === void 0 ? [] : _c,
-      formDisabled = _a.disabled,
-      form = _a.form,
-      formReset = __rest(_a, ['type', 'options', 'disabled', 'form']);
-    return react_1.default.createElement(
-      react_1.default.Fragment,
-      null,
-      options.map(function (item, index) {
-        var _a, _b, _c;
-        return react_1.default.createElement(
-          react_1.Fragment,
-          {
-            key:
-              (_b =
-                (_a = item === null || item === void 0 ? void 0 : item.name) === null ||
-                _a === void 0
-                  ? void 0
-                  : _a.toString()) !== null && _b !== void 0
-                ? _b
-                : index.toString(),
-          },
-          item.type === 'group'
-            ? react_1.default.createElement(
-                ItemGroupWrap_1.default,
-                __assign({}, item, {
-                  formDisabled: formDisabled,
-                  initialValues: formReset.initialValues,
-                }),
-              )
-            : react_1.default.createElement(
-                ItemWrap_1.default,
-                __assign({}, item, {
-                  values:
-                    (item === null || item === void 0 ? void 0 : item.name) &&
-                    ((_c =
-                      formReset === null || formReset === void 0
-                        ? void 0
-                        : formReset.initialValues) === null || _c === void 0
+/*
+ * @Author: yihuang
+ * @Date: 2022-02-17 16:18:42
+ * @Description: 自定义布局，可以使用group混合布局。
+ * @LastModifiedBy: yihuang
+ */
+import React, { Fragment, memo } from 'react';
+import ItemWrap from './ItemWrap';
+import ItemGroupWrap from './ItemGroupWrap';
+var CustomLayout = function (_a) {
+  var _b = _a.type,
+    type = _b === void 0 ? 'custom' : _b,
+    _c = _a.options,
+    options = _c === void 0 ? [] : _c,
+    formDisabled = _a.disabled,
+    form = _a.form,
+    formReset = __rest(_a, ['type', 'options', 'disabled', 'form']);
+  return React.createElement(
+    React.Fragment,
+    null,
+    options.map(function (item, index) {
+      var _a, _b, _c;
+      return React.createElement(
+        Fragment,
+        {
+          key:
+            (_b =
+              (_a = item === null || item === void 0 ? void 0 : item.name) === null || _a === void 0
+                ? void 0
+                : _a.toString()) !== null && _b !== void 0
+              ? _b
+              : index.toString(),
+        },
+        item.type === 'group'
+          ? React.createElement(
+              ItemGroupWrap,
+              __assign({}, item, {
+                formDisabled: formDisabled,
+                initialValues: formReset.initialValues,
+              }),
+            )
+          : React.createElement(
+              ItemWrap,
+              __assign({}, item, {
+                values:
+                  (item === null || item === void 0 ? void 0 : item.name) &&
+                  ((_c =
+                    formReset === null || formReset === void 0
                       ? void 0
-                      : _c[item === null || item === void 0 ? void 0 : item.name]),
-                  formDisabled: formDisabled,
-                  initialValues: formReset.initialValues,
-                }),
-              ),
-        );
-      }),
-    );
-  };
-  exports.default = (0, react_1.memo)(CustomLayout);
-});
-//# sourceMappingURL=CustomLayout.js.map
+                      : formReset.initialValues) === null || _c === void 0
+                    ? void 0
+                    : _c[item === null || item === void 0 ? void 0 : item.name]),
+                formDisabled: formDisabled,
+                initialValues: formReset.initialValues,
+              }),
+            ),
+      );
+    }),
+  );
+};
+export default memo(CustomLayout);

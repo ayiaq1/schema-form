@@ -25,71 +25,69 @@ var __rest =
       }
     return t;
   };
-define(['require', 'exports', 'react', 'antd', './SchemaForm/utils'], function (
-  require,
-  exports,
-  react_1,
-  antd_1,
-  utils_1,
-) {
-  'use strict';
-  Object.defineProperty(exports, '__esModule', { value: true });
-  /** 默认屏蔽空格的Input组件 */
-  var InputWrap = function (_a) {
-    var onChange = _a.onChange,
-      value = _a.value,
-      _b = _a.fieldProps,
-      fieldProps = _b === void 0 ? {} : _b;
-    /** input的值 */
-    var _c = (0, react_1.useState)(value),
-      inputVal = _c[0],
-      setInputVal = _c[1];
-    /** 默认屏蔽空格 */
-    var _d = fieldProps.isTrim,
-      isTrim = _d === void 0 ? true : _d,
-      fieldResetProps = __rest(fieldProps, ['isTrim']);
-    /** 转换值 */
-    var onChangeFun = function (params) {
-      var str = (0, utils_1.converChangeEvent)(params);
-      setInputVal(str);
-      onChange === null || onChange === void 0 ? void 0 : onChange(str);
-    };
-    /** 失焦去空格 */
-    var onBlurFun = function () {
-      var str = inputVal;
-      if (isTrim && (str !== null || str !== undefined)) {
-        if (str instanceof Array) {
-          str = str.map(function (item) {
-            var v = item === null || item === void 0 ? void 0 : item.trim();
-            return v === '' ? null : v;
-          });
-        } else {
-          var v = str === null || str === void 0 ? void 0 : str.trim();
-          str = v === '' ? null : v;
-        }
-      }
-      setInputVal(str);
-      onChange === null || onChange === void 0 ? void 0 : onChange(str);
-    };
-    (0, react_1.useEffect)(
-      function () {
-        if (value && value !== inputVal) {
-          onChangeFun(value);
-        }
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-      },
-      [value],
-    );
-    return react_1.default.createElement(
-      antd_1.Input,
-      __assign({ allowClear: true, maxLength: 200 }, fieldResetProps, {
-        value: inputVal,
-        onChange: onChangeFun,
-        onBlur: onBlurFun,
-      }),
-    );
+/*
+ * @Author: yihuang
+ * @Date: 2021-12-01 14:29:27
+ * @Description: 默认屏蔽空格的Input组件
+ * @LastModifiedBy: yihuang
+ */
+import React, { useEffect, useState } from 'react';
+import { Input } from 'antd';
+import { converChangeEvent } from './SchemaForm/utils';
+/** 默认屏蔽空格的Input组件 */
+var InputWrap = function (_a) {
+  var onChange = _a.onChange,
+    value = _a.value,
+    _b = _a.fieldProps,
+    fieldProps = _b === void 0 ? {} : _b;
+  /** input的值 */
+  var _c = useState(value),
+    inputVal = _c[0],
+    setInputVal = _c[1];
+  /** 默认屏蔽空格 */
+  var _d = fieldProps.isTrim,
+    isTrim = _d === void 0 ? true : _d,
+    fieldResetProps = __rest(fieldProps, ['isTrim']);
+  /** 转换值 */
+  var onChangeFun = function (params) {
+    var str = converChangeEvent(params);
+    setInputVal(str);
+    onChange === null || onChange === void 0 ? void 0 : onChange(str);
   };
-  InputWrap.displayName = 'InputWrap';
-  exports.default = InputWrap;
-});
-//# sourceMappingURL=InputWrap.js.map
+  /** 失焦去空格 */
+  var onBlurFun = function () {
+    var str = inputVal;
+    if (isTrim && (str !== null || str !== undefined)) {
+      if (str instanceof Array) {
+        str = str.map(function (item) {
+          var v = item === null || item === void 0 ? void 0 : item.trim();
+          return v === '' ? null : v;
+        });
+      } else {
+        var v = str === null || str === void 0 ? void 0 : str.trim();
+        str = v === '' ? null : v;
+      }
+    }
+    setInputVal(str);
+    onChange === null || onChange === void 0 ? void 0 : onChange(str);
+  };
+  useEffect(
+    function () {
+      if (value && value !== inputVal) {
+        onChangeFun(value);
+      }
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+    },
+    [value],
+  );
+  return React.createElement(
+    Input,
+    __assign({ allowClear: true, maxLength: 200 }, fieldResetProps, {
+      value: inputVal,
+      onChange: onChangeFun,
+      onBlur: onBlurFun,
+    }),
+  );
+};
+InputWrap.displayName = 'InputWrap';
+export default InputWrap;

@@ -2,17 +2,24 @@
   "extends": "./node_modules/@umijs/fabric/dist/tsconfig.json",
   "compilerOptions": {
     "target": "es5",
-    "module": "amd",
+    "module": "ESNext",
     "types": ["node", "jest"],
-    "lib": ["dom", "esnext"],
     "typeRoots": ["node_modules/@types"],
+    "declaration": true,
     "skipLibCheck": true,
     "esModuleInterop": true,
-    "jsx": "react",
+    "sourceMap": false,
     "baseUrl": "./",
-    "rootDir": "./",
+    "rootDir": "./src",
     "outDir": "./lib"
   },
-  "include": ["src/**/*", "typings.ts", "tests/**/*", "__test__/**/*", "example/**/*"],
+  "include": [
+    "src/**/*",
+    "../example/**/*",
+    "../__test__/**/*",
+    "../tests/**/*",
+    "typings.ts",
+    "*.d.ts"
+  ],
   "exclude": ["node_modules", "dist", "lib"]
 }

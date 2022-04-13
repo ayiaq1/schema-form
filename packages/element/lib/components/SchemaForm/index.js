@@ -25,45 +25,31 @@ var __rest =
       }
     return t;
   };
-define(['require', 'exports', 'react', 'antd', './RowLayout', './CustomLayout'], function (
-  require,
-  exports,
-  react_1,
-  antd_1,
-  RowLayout_1,
-  CustomLayout_1,
-) {
-  'use strict';
-  Object.defineProperty(exports, '__esModule', { value: true });
-  var SchemaForm = function (_a) {
-    var _b = _a.type,
-      type = _b === void 0 ? 'row' : _b,
-      resetProps = __rest(_a, ['type']);
-    var _c = resetProps.options,
-      options = _c === void 0 ? [] : _c,
-      form = resetProps.form,
-      formReset = __rest(resetProps, ['options', 'form']);
-    return react_1.default.createElement(
-      react_1.default.Fragment,
-      null,
-      (options === null || options === void 0 ? void 0 : options.length)
-        ? react_1.default.createElement(
-            antd_1.Form,
-            __assign({}, formReset, { form: form }),
-            type === 'row'
-              ? react_1.default.createElement(
-                  RowLayout_1.default,
-                  __assign({ type: type }, resetProps),
-                )
-              : react_1.default.createElement(
-                  CustomLayout_1.default,
-                  __assign({ type: type }, resetProps),
-                ),
-          )
-        : null,
-    );
-  };
-  SchemaForm.displayName = 'SchemaForm';
-  exports.default = (0, react_1.memo)(SchemaForm);
-});
-//# sourceMappingURL=index.js.map
+import React, { memo } from 'react';
+import { Form } from 'antd';
+import RowLayout from './RowLayout';
+import CustomLayout from './CustomLayout';
+var SchemaForm = function (_a) {
+  var _b = _a.type,
+    type = _b === void 0 ? 'row' : _b,
+    resetProps = __rest(_a, ['type']);
+  var _c = resetProps.options,
+    options = _c === void 0 ? [] : _c,
+    form = resetProps.form,
+    formReset = __rest(resetProps, ['options', 'form']);
+  return React.createElement(
+    React.Fragment,
+    null,
+    (options === null || options === void 0 ? void 0 : options.length)
+      ? React.createElement(
+          Form,
+          __assign({}, formReset, { form: form }),
+          type === 'row'
+            ? React.createElement(RowLayout, __assign({ type: type }, resetProps))
+            : React.createElement(CustomLayout, __assign({ type: type }, resetProps)),
+        )
+      : null,
+  );
+};
+SchemaForm.displayName = 'SchemaForm';
+export default memo(SchemaForm);

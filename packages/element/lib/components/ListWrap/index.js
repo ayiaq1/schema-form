@@ -12,34 +12,37 @@ var __assign =
       };
     return __assign.apply(this, arguments);
   };
-define(['require', 'exports', 'react', '../Field'], function (require, exports, react_1, Field_1) {
-  'use strict';
-  Object.defineProperty(exports, '__esModule', { value: true });
-  var ListWrap = function (props) {
-    var value = props.value,
-      className = props.className,
-      style = props.style;
-    return react_1.default.createElement(
-      react_1.default.Fragment,
-      null,
-      value instanceof Array && value.length
-        ? react_1.default.createElement(
-            'ul',
-            { className: className, style: style },
-            value === null || value === void 0
-              ? void 0
-              : value.map(function (text, index) {
-                  return react_1.default.createElement(
-                    'li',
-                    { key: index },
-                    react_1.default.createElement(Field_1.default, __assign({}, props)),
-                  );
-                }),
-          )
-        : null,
-    );
-  };
-  ListWrap.displayName = 'ListWrap';
-  exports.default = (0, react_1.memo)(ListWrap);
-});
-//# sourceMappingURL=index.js.map
+/*
+ * @Author: yihuang
+ * @Date: 2021-12-02 14:11:36
+ * @Description: 列表包裹器 编辑：input，只读：text
+ * @LastModifiedBy: yihuang
+ */
+import React, { memo } from 'react';
+import Field from '../Field';
+var ListWrap = function (props) {
+  var value = props.value,
+    className = props.className,
+    style = props.style;
+  return React.createElement(
+    React.Fragment,
+    null,
+    value instanceof Array && value.length
+      ? React.createElement(
+          'ul',
+          { className: className, style: style },
+          value === null || value === void 0
+            ? void 0
+            : value.map(function (text, index) {
+                return React.createElement(
+                  'li',
+                  { key: index },
+                  React.createElement(Field, __assign({}, props)),
+                );
+              }),
+        )
+      : null,
+  );
+};
+ListWrap.displayName = 'ListWrap';
+export default memo(ListWrap);

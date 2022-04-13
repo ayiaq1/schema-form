@@ -12,55 +12,53 @@ var __assign =
       };
     return __assign.apply(this, arguments);
   };
-define(['require', 'exports', 'react', './ItemWrap'], function (
-  require,
-  exports,
-  react_1,
-  ItemWrap_1,
-) {
-  'use strict';
-  Object.defineProperty(exports, '__esModule', { value: true });
-  var ItemGroupWrap = function (_a) {
-    var className = _a.className,
-      style = _a.style,
-      options = _a.options,
-      formDisabled = _a.formDisabled,
-      initialValues = _a.initialValues;
-    return react_1.default.createElement(
-      'div',
-      { className: className, style: style },
-      (options === null || options === void 0 ? void 0 : options.length)
-        ? options.map(function (item, index) {
-            var _a, _b;
-            return react_1.default.createElement(
-              ItemWrap_1.default,
-              __assign(
-                {
-                  key:
-                    (_b =
-                      (_a = item === null || item === void 0 ? void 0 : item.name) === null ||
-                      _a === void 0
-                        ? void 0
-                        : _a.toString()) !== null && _b !== void 0
-                      ? _b
-                      : index.toString(),
-                },
-                item,
-                {
-                  values:
-                    (item === null || item === void 0 ? void 0 : item.name) &&
-                    (initialValues === null || initialValues === void 0
+/*
+ * @Author: yihuang
+ * @Date: 2022-02-21 16:55:00
+ * @Description: 节点组的包裹器
+ * @LastModifiedBy: yihuang
+ */
+import React, { memo } from 'react';
+import ItemWrap from './ItemWrap';
+var ItemGroupWrap = function (_a) {
+  var className = _a.className,
+    style = _a.style,
+    options = _a.options,
+    formDisabled = _a.formDisabled,
+    initialValues = _a.initialValues;
+  return React.createElement(
+    'div',
+    { className: className, style: style },
+    (options === null || options === void 0 ? void 0 : options.length)
+      ? options.map(function (item, index) {
+          var _a, _b;
+          return React.createElement(
+            ItemWrap,
+            __assign(
+              {
+                key:
+                  (_b =
+                    (_a = item === null || item === void 0 ? void 0 : item.name) === null ||
+                    _a === void 0
                       ? void 0
-                      : initialValues[item === null || item === void 0 ? void 0 : item.name]),
-                  formDisabled: formDisabled,
-                  initialValues: initialValues,
-                },
-              ),
-            );
-          })
-        : null,
-    );
-  };
-  exports.default = (0, react_1.memo)(ItemGroupWrap);
-});
-//# sourceMappingURL=ItemGroupWrap.js.map
+                      : _a.toString()) !== null && _b !== void 0
+                    ? _b
+                    : index.toString(),
+              },
+              item,
+              {
+                values:
+                  (item === null || item === void 0 ? void 0 : item.name) &&
+                  (initialValues === null || initialValues === void 0
+                    ? void 0
+                    : initialValues[item === null || item === void 0 ? void 0 : item.name]),
+                formDisabled: formDisabled,
+                initialValues: initialValues,
+              },
+            ),
+          );
+        })
+      : null,
+  );
+};
+export default memo(ItemGroupWrap);
