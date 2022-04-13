@@ -1,13 +1,13 @@
 const shelljs = require('shelljs');
 const cwd = process.cwd();
-console.log('cwd', cwd);
-shelljs.exec('npm run clear');
 
-console.time('lerna run build');
+console.time('npm run build');
 
-shelljs.exec('lerna run build');
+// 进入packgaes下的element做打包
+shelljs.cd(`${cwd}/packages/element`);
 
-// 将packgaes下的element/lib 移动到根目录做打包
-shelljs.mv(`${cwd}/packages/element/lib`, `${cwd}`);
+shelljs.exec(`npm run build`);
 
-console.timeEnd('lerna run build');
+shelljs.cp(`${cwd}/README.md`, `${cwd}/packages/element`);
+
+console.timeEnd('npm run build');

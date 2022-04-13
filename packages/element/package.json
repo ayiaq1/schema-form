@@ -1,14 +1,29 @@
 {
   "name": "@dawdler/schema-form",
-  "version": "0.0.1",
+  "version": "0.0.7",
   "description": "适配层组件",
-  "sideEffects": false,
   "author": "250751717@qq.com",
   "scripts": {
     "test": "jest --env=jsdom",
     "jest:coverage": "jest --env=jsdom --coverage",
     "jest:clear": "jest --clearCache",
-    "build": "rm -rf lib/* && tsc -p tsconfig.json"
+    "build": "rm -rf lib/* && tsc -p tsconfig.json && npm pack"
+  },
+  "homepage": "https://github.com/ayiaq1/schema-form#readme",
+  "bugs": "https://github.com/ayiaq1/schema-form/issues",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ayiaq1/schema-form.git"
+  },
+  "keywords": [
+    "react",
+    "ant design",
+    "schema",
+    "form"
+  ],
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
   },
   "dependencies": {
     "@ant-design/icons": ">=4.0.0",

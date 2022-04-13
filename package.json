@@ -1,6 +1,9 @@
 {
-  "name": "@dawdler/schema-form",
+  "name": "@dawdler/schema-form-doc",
   "version": "0.0.1",
+  "workspaces": [
+    "packages"
+  ],
   "description": "给开发者用的schema form（基于antd-react）",
   "repository": {
     "type": "git",
@@ -12,7 +15,7 @@
     "start": "dumi dev",
     "doc:build": "rm -rf docs-dist && dumi build",
     "build": "node ./scripts/build.js && npm pack",
-    "clear": "node ./scripts/clear.js",
+    "build:publish": "npm run build && node ./scripts/publish.js",
     "deploy": "npm run doc:build && gh-pages -d docs-dist",
     "prettier": "prettier --write \"**/*.{js,jsx,tsx,ts,less,md,json}\""
   },

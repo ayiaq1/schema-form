@@ -9,4 +9,4 @@ import SchemaForm from './components/SchemaForm';
 
 export { Element, SchemaForm };
 
-export default Element;
+export default SchemaForm;
