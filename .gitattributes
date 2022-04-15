@@ -1,5 +1,5 @@
-*.ts linguist-language=typescript;
-*.js linguist-language=typescript;
-*.tsx linguist-language=typescript;
+*.ts linguist-language=javascript;
+*.js linguist-language=javascript;
+*.tsx linguist-language=javascript;
 *.css linguist-language=css;
-*.less linguist-language=less;
+*.less linguist-language=css;
