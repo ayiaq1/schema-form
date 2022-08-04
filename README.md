@@ -20,8 +20,10 @@ npm install -D @dawdler/schema-form
 
 # 更新日志
 
+```
 0.0.x: 基础版本
 1.0.0: 将各组件独立抽离，type 类型统一为 antd 的小驼峰命名:TimePicker.RangePicker -> timeRangePicker）
+```
 
 # 使用
 
