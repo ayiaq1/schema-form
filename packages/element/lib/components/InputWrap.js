@@ -85,6 +85,7 @@ var InputWrap = function (_a) {
     __assign({ allowClear: true, maxLength: 200 }, fieldResetProps, {
       value: inputVal,
       onChange: onChangeFun,
+      onPressEnter: onBlurFun,
       onBlur: onBlurFun,
     }),
   );

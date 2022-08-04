@@ -8,8 +8,10 @@ import React, { useEffect, useState } from 'react';
 import { converChangeEvent } from './utils';
 var RenderWrap = function (_a) {
   var disabled = _a.disabled,
+    readOnly = _a.readOnly,
     render = _a.render,
     values = _a.values,
+    value = _a.value,
     initialValues = _a.initialValues,
     onChange = _a.onChange,
     fieldProps = _a.fieldProps;
@@ -38,6 +40,12 @@ var RenderWrap = function (_a) {
     },
     [fieldProps.value],
   );
+  useEffect(
+    function () {
+      setVal(value);
+    },
+    [value],
+  );
   return React.createElement(
     React.Fragment,
     null,
@@ -47,6 +55,7 @@ var RenderWrap = function (_a) {
           value: val,
           onChange: onChangeFunc,
           disabled: disabled,
+          readOnly: readOnly,
           initialValues: initialValues,
         }),
   );

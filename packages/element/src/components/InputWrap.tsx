@@ -52,6 +52,7 @@ const InputWrap = ({ onChange, value, fieldProps = {} }: IInputProps) => {
       {...fieldResetProps}
       value={inputVal}
       onChange={onChangeFun}
+      onPressEnter={onBlurFun}
       onBlur={onBlurFun}
     />
   );

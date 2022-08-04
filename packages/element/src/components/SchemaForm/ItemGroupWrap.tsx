@@ -4,8 +4,7 @@
  * @Description: 节点组的包裹器
  * @LastModifiedBy: yihuang
  */
-import React, { memo } from 'react';
-import type { CSSProperties } from 'react';
+import React, { CSSProperties, memo } from 'react';
 import ItemWrap from './ItemWrap';
 import type { IFormInheritProps, IFormItem } from './typings';
 
@@ -15,7 +14,14 @@ interface IProps extends IFormInheritProps {
   style?: CSSProperties;
 }
 
-const ItemGroupWrap = ({ className, style, options, formDisabled, initialValues }: IProps) => {
+const ItemGroupWrap = ({
+  className,
+  style,
+  options,
+  formDisabled,
+  formReadonly,
+  initialValues,
+}: IProps) => {
   return (
     <div className={className} style={style}>
       {options?.length
@@ -25,6 +31,7 @@ const ItemGroupWrap = ({ className, style, options, formDisabled, initialValues 
               {...item}
               values={item?.name && initialValues?.[item?.name as any]}
               formDisabled={formDisabled}
+              formReadonly={formReadonly}
               initialValues={initialValues}
             />
           ))

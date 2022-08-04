@@ -3,68 +3,76 @@
 exports[`SchemaForm Custom Save custom snapshot 1`] = `
 <form
   className="ant-form ant-form-horizontal"
-  disabled={true}
   onReset={[Function]}
   onSubmit={[Function]}
 >
   <div
-    className="ant-row ant-form-item"
-    style={Object {}}
+    className="ant-form-item"
   >
     <div
-      className="ant-col ant-form-item-label"
-      style={Object {}}
-    >
-      <label
-        className=""
-        htmlFor="diy"
-        title="自定义组件"
-      >
-        自定义组件
-      </label>
-    </div>
-    <div
-      className="ant-col ant-form-item-control"
+      className="ant-row ant-form-item-row"
       style={Object {}}
     >
       <div
-        className="ant-form-item-control-input"
+        className="ant-col ant-form-item-label"
+        style={Object {}}
+      >
+        <label
+          className=""
+          htmlFor="diy"
+          title="自定义组件"
+        >
+          自定义组件
+        </label>
+      </div>
+      <div
+        className="ant-col ant-form-item-control"
+        style={Object {}}
       >
         <div
-          className="ant-form-item-control-input-content"
+          className="ant-form-item-control-input"
         >
           <div
-            className="ant-space ant-space-horizontal ant-space-align-center"
-            style={Object {}}
+            className="ant-form-item-control-input-content"
           >
             <div
-              className="ant-space-item"
-              style={
-                Object {
-                  "marginRight": 8,
-                }
-              }
-            >
-              <button
-                className="ant-btn ant-btn-default change-btn"
-                disabled={true}
-                onClick={[Function]}
-                type="button"
-              />
-            </div>
-            <div
-              className="ant-space-item"
+              className="ant-space ant-space-horizontal ant-space-align-center"
               style={Object {}}
             >
-              <button
-                className="ant-btn ant-btn-default cancel-btn"
-                onClick={[Function]}
-                type="button"
+              <div
+                className="ant-space-item"
+                style={
+                  Object {
+                    "marginRight": 8,
+                  }
+                }
               >
-                <span>
-                  取消禁用
-                </span>
-              </button>
+                <button
+                  className="ant-btn ant-btn-default change-btn"
+                  disabled={true}
+                  onClick={[Function]}
+                  type="button"
+                >
+                  <span>
+                    diy-value
+                  </span>
+                </button>
+              </div>
+              <div
+                className="ant-space-item"
+                style={Object {}}
+              >
+                <button
+                  className="ant-btn ant-btn-default cancel-btn"
+                  disabled={true}
+                  onClick={[Function]}
+                  type="button"
+                >
+                  <span>
+                    取消禁用
+                  </span>
+                </button>
+              </div>
             </div>
           </div>
         </div>
@@ -81,119 +89,126 @@ exports[`SchemaForm Element Save type is custom snapshot 1`] = `
   onSubmit={[Function]}
 >
   <div
-    className="ant-row ant-form-item"
-    style={Object {}}
+    className="ant-form-item"
   >
     <div
-      className="ant-col ant-form-item-label"
-      style={Object {}}
-    >
-      <label
-        className=""
-        htmlFor="text"
-        title="text"
-      >
-        text
-      </label>
-    </div>
-    <div
-      className="ant-col ant-form-item-control"
+      className="ant-row ant-form-item-row"
       style={Object {}}
     >
       <div
-        className="ant-form-item-control-input"
+        className="ant-col ant-form-item-label"
+        style={Object {}}
+      >
+        <label
+          className=""
+          htmlFor="text"
+          title="text"
+        >
+          text
+        </label>
+      </div>
+      <div
+        className="ant-col ant-form-item-control"
+        style={Object {}}
       >
         <div
-          className="ant-form-item-control-input-content"
+          className="ant-form-item-control-input"
         >
-          <span
-            className="ant-typography ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-            onClick={null}
-            style={
-              Object {
-                "WebkitLineClamp": undefined,
-                "width": "100%",
+          <div
+            className="ant-form-item-control-input-content"
+          >
+            <span
+              className="ant-typography ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
+              onClick={null}
+              style={
+                Object {
+                  "WebkitLineClamp": undefined,
+                }
               }
-            }
-          />
+            />
+          </div>
         </div>
       </div>
     </div>
   </div>
   <div
-    className="ant-row ant-form-item"
-    style={Object {}}
+    className="ant-form-item"
   >
     <div
-      className="ant-col ant-form-item-label"
-      style={Object {}}
-    >
-      <label
-        className=""
-        htmlFor="input"
-        title="input"
-      >
-        input
-      </label>
-    </div>
-    <div
-      className="ant-col ant-form-item-control"
+      className="ant-row ant-form-item-row"
       style={Object {}}
     >
       <div
-        className="ant-form-item-control-input"
+        className="ant-col ant-form-item-label"
+        style={Object {}}
+      >
+        <label
+          className=""
+          htmlFor="input"
+          title="input"
+        >
+          input
+        </label>
+      </div>
+      <div
+        className="ant-col ant-form-item-control"
+        style={Object {}}
       >
         <div
-          className="ant-form-item-control-input-content"
+          className="ant-form-item-control-input"
         >
-          <span
-            className="ant-input-affix-wrapper"
-            onMouseUp={[Function]}
+          <div
+            className="ant-form-item-control-input-content"
           >
-            <input
-              className="ant-input"
-              hidden={null}
-              maxLength={200}
-              onBlur={[Function]}
-              onChange={[Function]}
-              onFocus={[Function]}
-              onKeyDown={[Function]}
-              style={null}
-              type="text"
-              value=""
-            />
             <span
-              className="ant-input-suffix"
+              className="ant-input-affix-wrapper"
+              onMouseDown={[Function]}
             >
+              <input
+                className="ant-input"
+                hidden={null}
+                maxLength={200}
+                onBlur={[Function]}
+                onChange={[Function]}
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                style={null}
+                type="text"
+                value=""
+              />
               <span
-                className="ant-input-clear-icon ant-input-clear-icon-hidden"
-                onClick={[Function]}
-                onMouseDown={[Function]}
-                role="button"
-                tabIndex={-1}
+                className="ant-input-suffix"
               >
                 <span
-                  aria-label="close-circle"
-                  className="anticon anticon-close-circle"
-                  role="img"
+                  className="ant-input-clear-icon ant-input-clear-icon-hidden"
+                  onClick={[Function]}
+                  onMouseDown={[Function]}
+                  role="button"
+                  tabIndex={-1}
                 >
-                  <svg
-                    aria-hidden="true"
-                    data-icon="close-circle"
-                    fill="currentColor"
-                    focusable="false"
-                    height="1em"
-                    viewBox="64 64 896 896"
-                    width="1em"
+                  <span
+                    aria-label="close-circle"
+                    className="anticon anticon-close-circle"
+                    role="img"
                   >
-                    <path
-                      d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm165.4 618.2l-66-.3L512 563.4l-99.3 118.4-66.1.3c-4.4 0-8-3.5-8-8 0-1.9.7-3.7 1.9-5.2l130.1-155L340.5 359a8.32 8.32 0 01-1.9-5.2c0-4.4 3.6-8 8-8l66.1.3L512 464.6l99.3-118.4 66-.3c4.4 0 8 3.5 8 8 0 1.9-.7 3.7-1.9 5.2L553.5 514l130 155c1.2 1.5 1.9 3.3 1.9 5.2 0 4.4-3.6 8-8 8z"
-                    />
-                  </svg>
+                    <svg
+                      aria-hidden="true"
+                      data-icon="close-circle"
+                      fill="currentColor"
+                      focusable="false"
+                      height="1em"
+                      viewBox="64 64 896 896"
+                      width="1em"
+                    >
+                      <path
+                        d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm165.4 618.2l-66-.3L512 563.4l-99.3 118.4-66.1.3c-4.4 0-8-3.5-8-8 0-1.9.7-3.7 1.9-5.2l130.1-155L340.5 359a8.32 8.32 0 01-1.9-5.2c0-4.4 3.6-8 8-8l66.1.3L512 464.6l99.3-118.4 66-.3c4.4 0 8 3.5 8 8 0 1.9-.7 3.7-1.9 5.2L553.5 514l130 155c1.2 1.5 1.9 3.3 1.9 5.2 0 4.4-3.6 8-8 8z"
+                      />
+                    </svg>
+                  </span>
                 </span>
               </span>
             </span>
-          </span>
+          </div>
         </div>
       </div>
     </div>
@@ -229,41 +244,87 @@ exports[`SchemaForm Element Save type is row snapshot 1`] = `
       type="text"
     >
       <div
-        className="ant-row ant-form-item"
-        style={Object {}}
+        className="ant-form-item"
       >
         <div
-          className="ant-col ant-form-item-label"
-          style={Object {}}
-        >
-          <label
-            className=""
-            htmlFor="text"
-            title="text"
-          >
-            text
-          </label>
-        </div>
-        <div
-          className="ant-col ant-form-item-control"
+          className="ant-row ant-form-item-row"
           style={Object {}}
         >
           <div
-            className="ant-form-item-control-input"
+            className="ant-col ant-form-item-label"
+            style={Object {}}
+          >
+            <label
+              className=""
+              htmlFor="text"
+              title="text"
+            >
+              text
+            </label>
+          </div>
+          <div
+            className="ant-col ant-form-item-control"
+            style={Object {}}
           >
             <div
-              className="ant-form-item-control-input-content"
+              className="ant-form-item-control-input"
             >
-              <span
-                className="ant-typography ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line"
-                onClick={null}
-                style={
-                  Object {
-                    "WebkitLineClamp": undefined,
-                    "width": "100%",
+              <div
+                className="ant-form-item-control-input-content"
+              >
+                <span
+                  className="ant-typography ant-typography-ellipsis ant-typography-single-line"
+                  onClick={null}
+                  style={
+                    Object {
+                      "WebkitLineClamp": undefined,
+                    }
                   }
-                }
-              />
+                >
+                  <span
+                    aria-hidden={true}
+                    style={
+                      Object {
+                        "display": "block",
+                        "left": 0,
+                        "pointerEvents": "none",
+                        "position": "fixed",
+                        "top": 0,
+                        "visibility": "hidden",
+                        "whiteSpace": "nowrap",
+                        "wordBreak": "keep-all",
+                        "zIndex": -9999,
+                      }
+                    }
+                  >
+                    lg
+                  </span>
+                  <span
+                    aria-hidden={true}
+                    style={
+                      Object {
+                        "display": "block",
+                        "left": 0,
+                        "margin": 0,
+                        "padding": 0,
+                        "pointerEvents": "none",
+                        "position": "fixed",
+                        "top": 0,
+                        "visibility": "hidden",
+                        "whiteSpace": "normal",
+                        "width": 0,
+                        "zIndex": -9999,
+                      }
+                    }
+                  >
+                    <span
+                      aria-hidden={true}
+                    >
+                      ...
+                    </span>
+                  </span>
+                </span>
+              </div>
             </div>
           </div>
         </div>
@@ -282,79 +343,83 @@ exports[`SchemaForm Element Save type is row snapshot 1`] = `
       type="input"
     >
       <div
-        className="ant-row ant-form-item"
-        style={Object {}}
+        className="ant-form-item"
       >
         <div
-          className="ant-col ant-form-item-label"
-          style={Object {}}
-        >
-          <label
-            className=""
-            htmlFor="input"
-            title="input"
-          >
-            input
-          </label>
-        </div>
-        <div
-          className="ant-col ant-form-item-control"
+          className="ant-row ant-form-item-row"
           style={Object {}}
         >
           <div
-            className="ant-form-item-control-input"
+            className="ant-col ant-form-item-label"
+            style={Object {}}
+          >
+            <label
+              className=""
+              htmlFor="input"
+              title="input"
+            >
+              input
+            </label>
+          </div>
+          <div
+            className="ant-col ant-form-item-control"
+            style={Object {}}
           >
             <div
-              className="ant-form-item-control-input-content"
+              className="ant-form-item-control-input"
             >
-              <span
-                className="ant-input-affix-wrapper"
-                onMouseUp={[Function]}
+              <div
+                className="ant-form-item-control-input-content"
               >
-                <input
-                  className="ant-input"
-                  hidden={null}
-                  maxLength={200}
-                  onBlur={[Function]}
-                  onChange={[Function]}
-                  onFocus={[Function]}
-                  onKeyDown={[Function]}
-                  style={null}
-                  type="text"
-                  value=""
-                />
                 <span
-                  className="ant-input-suffix"
+                  className="ant-input-affix-wrapper"
+                  onMouseDown={[Function]}
                 >
+                  <input
+                    className="ant-input"
+                    hidden={null}
+                    maxLength={200}
+                    onBlur={[Function]}
+                    onChange={[Function]}
+                    onFocus={[Function]}
+                    onKeyDown={[Function]}
+                    style={null}
+                    type="text"
+                    value=""
+                  />
                   <span
-                    className="ant-input-clear-icon ant-input-clear-icon-hidden"
-                    onClick={[Function]}
-                    onMouseDown={[Function]}
-                    role="button"
-                    tabIndex={-1}
+                    className="ant-input-suffix"
                   >
                     <span
-                      aria-label="close-circle"
-                      className="anticon anticon-close-circle"
-                      role="img"
+                      className="ant-input-clear-icon ant-input-clear-icon-hidden"
+                      onClick={[Function]}
+                      onMouseDown={[Function]}
+                      role="button"
+                      tabIndex={-1}
                     >
-                      <svg
-                        aria-hidden="true"
-                        data-icon="close-circle"
-                        fill="currentColor"
-                        focusable="false"
-                        height="1em"
-                        viewBox="64 64 896 896"
-                        width="1em"
+                      <span
+                        aria-label="close-circle"
+                        className="anticon anticon-close-circle"
+                        role="img"
                       >
-                        <path
-                          d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm165.4 618.2l-66-.3L512 563.4l-99.3 118.4-66.1.3c-4.4 0-8-3.5-8-8 0-1.9.7-3.7 1.9-5.2l130.1-155L340.5 359a8.32 8.32 0 01-1.9-5.2c0-4.4 3.6-8 8-8l66.1.3L512 464.6l99.3-118.4 66-.3c4.4 0 8 3.5 8 8 0 1.9-.7 3.7-1.9 5.2L553.5 514l130 155c1.2 1.5 1.9 3.3 1.9 5.2 0 4.4-3.6 8-8 8z"
-                        />
-                      </svg>
+                        <svg
+                          aria-hidden="true"
+                          data-icon="close-circle"
+                          fill="currentColor"
+                          focusable="false"
+                          height="1em"
+                          viewBox="64 64 896 896"
+                          width="1em"
+                        >
+                          <path
+                            d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm165.4 618.2l-66-.3L512 563.4l-99.3 118.4-66.1.3c-4.4 0-8-3.5-8-8 0-1.9.7-3.7 1.9-5.2l130.1-155L340.5 359a8.32 8.32 0 01-1.9-5.2c0-4.4 3.6-8 8-8l66.1.3L512 464.6l99.3-118.4 66-.3c4.4 0 8 3.5 8 8 0 1.9-.7 3.7-1.9 5.2L553.5 514l130 155c1.2 1.5 1.9 3.3 1.9 5.2 0 4.4-3.6 8-8 8z"
+                          />
+                        </svg>
+                      </span>
                     </span>
                   </span>
                 </span>
-              </span>
+              </div>
             </div>
           </div>
         </div>

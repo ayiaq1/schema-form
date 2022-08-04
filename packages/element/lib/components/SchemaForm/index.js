@@ -25,7 +25,7 @@ var __rest =
       }
     return t;
   };
-import React, { memo } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Form } from 'antd';
 import RowLayout from './RowLayout';
 import CustomLayout from './CustomLayout';
@@ -37,13 +37,28 @@ var SchemaForm = function (_a) {
     options = _c === void 0 ? [] : _c,
     form = resetProps.form,
     formReset = __rest(resetProps, ['options', 'form']);
+  var _d = useState(resetProps.initialValues),
+    initialValues = _d[0],
+    setInitialValues = _d[1];
+  useEffect(
+    function () {
+      if (resetProps === null || resetProps === void 0 ? void 0 : resetProps.initialValues) {
+        setInitialValues(
+          resetProps === null || resetProps === void 0 ? void 0 : resetProps.initialValues,
+        );
+      }
+    },
+    [resetProps === null || resetProps === void 0 ? void 0 : resetProps.initialValues],
+  );
   return React.createElement(
     React.Fragment,
     null,
     (options === null || options === void 0 ? void 0 : options.length)
       ? React.createElement(
           Form,
-          __assign({}, formReset, { form: form }),
+          __assign({ initialValues: initialValues, scrollToFirstError: true }, formReset, {
+            form: form,
+          }),
           type === 'row'
             ? React.createElement(RowLayout, __assign({ type: type }, resetProps))
             : React.createElement(CustomLayout, __assign({ type: type }, resetProps)),
@@ -52,4 +67,4 @@ var SchemaForm = function (_a) {
   );
 };
 SchemaForm.displayName = 'SchemaForm';
-export default memo(SchemaForm);
+export default SchemaForm;

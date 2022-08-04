@@ -6,14 +6,15 @@
  */
 import React, { memo } from 'react';
 import { Form } from 'antd';
-import type { IItemWrapProps } from './typings';
-import { Element } from '../../index';
+import { IItemWrapProps } from './typings';
+import { Element, Field } from '../../index';
 import RenderWrap from './RenderWrap';
 
 const { Item } = Form;
 
 const ItemWrap = ({
   formDisabled,
+  formReadonly,
   initialValues,
   values,
   render,
@@ -22,7 +23,7 @@ const ItemWrap = ({
   fieldProps = {},
   ...reset
 }: IItemWrapProps) => {
-  const { disabled, ...resetFieldProps } = fieldProps as any;
+  const { disabled, readOnly, ...resetFieldProps } = fieldProps as any;
   return (
     <Item {...reset}>
       {type === 'custom' ? (
@@ -33,7 +34,19 @@ const ItemWrap = ({
           values={values}
           render={render}
           disabled={disabled ?? formDisabled}
+          readOnly={readOnly ?? formReadonly}
           initialValues={initialValues}
+        />
+      ) : readOnly ?? formReadonly ? (
+        <Field
+          {...reset}
+          fieldProps={
+            {
+              ...resetFieldProps,
+              value: values,
+            } as any
+          }
+          type={type as any}
         />
       ) : (
         // 透传

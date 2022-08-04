@@ -7,11 +7,10 @@
 
 /** 转换所有UI组件的onChange数据 */
 export const converChangeEvent = (params: any): any => {
-  let str;
+  let str = params;
+
   if (params?.target) {
     str = params.target.value;
-  } else {
-    str = params;
   }
   return str;
 };

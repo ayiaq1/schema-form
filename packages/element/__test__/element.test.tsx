@@ -12,24 +12,6 @@ import { waitForComponentToPaint } from '../tests/utils';
 
 describe('Element', () => {
   /* Snapshot is a way to test the UI of your component. */
-  it('Save Text Snapshot', async () => {
-    const wrapper = renderer.create(<Element type="text" value="text" />);
-    expect(wrapper.toJSON()).toMatchSnapshot();
-  });
-
-  it('Save ListWrap Input Snapshot', async () => {
-    const wrapper = renderer.create(
-      <Element type="list-wrap" mode="edit" value={['text', 'text1']} />,
-    );
-    expect(wrapper.toJSON()).toMatchSnapshot();
-  });
-
-  it('Save ListWrap Text Snapshot', async () => {
-    const wrapper = renderer.create(
-      <Element type="list-wrap" mode="read" value={['text', 'text1']} />,
-    );
-    expect(wrapper.toJSON()).toMatchSnapshot();
-  });
 
   it('Save Input Snapshot', async () => {
     const wrapper = renderer.create(<Element type="input" value="input" />);

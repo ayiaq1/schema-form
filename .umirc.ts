@@ -12,6 +12,7 @@ export default defineConfig({
   title: packageJSON.name,
   base: isProd ? doman : '/',
   publicPath: isProd ? doman : '/',
+  devtool: 'eval-cheap-module-source-map',
   mode: 'doc',
   hash: true,
   outputPath: 'docs-dist',

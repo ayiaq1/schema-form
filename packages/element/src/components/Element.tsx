@@ -7,15 +7,18 @@
 import React, { useEffect, useState } from 'react';
 import type {
   IAvatarProps,
+  IBaseFieldProps,
   ICascaderProps,
   ICheckboxGroupProps,
   ICheckboxProps,
+  ICustomProps,
   IDatePickerProps,
+  IDescriptionsProps,
+  IDividerProps,
   IImageProps,
   IInputGroupProps,
   IInputNumberProps,
   IInputProps,
-  IListWrapProps,
   IPasswordProps,
   IProgressProps,
   IProps,
@@ -36,7 +39,6 @@ import type {
 } from '../typings';
 import {
   Select,
-  DatePicker,
   Checkbox,
   Input,
   InputNumber,
@@ -44,7 +46,6 @@ import {
   Rate,
   Slider,
   Switch,
-  TimePicker,
   Upload,
   Image,
   Tag,
@@ -52,74 +53,101 @@ import {
   Cascader,
   TreeSelect,
   Avatar,
+  Divider,
 } from 'antd';
-import Field from './Field';
-import Text from './Text';
-import ListWrap from './ListWrap';
 import { converChangeEvent } from './SchemaForm/utils';
+import TimeConvertWrap from './TimeConvertWrap';
+import InputWrap from './InputWrap';
+import Text from './Text';
+import DescriptionWrap from './DescriptionWrap';
 
 /** Element 独立使用的时候，重载type推导类型。 */
+/** divider */
+function Element(props: IDividerProps): JSX.Element;
+/** descriptions */
+function Element(props: IDescriptionsProps): JSX.Element;
 /** text */
-function Element(props: ITextProps): any;
-/** list-wrap */
-function Element(props: IListWrapProps): any;
+function Element(props: ITextProps): JSX.Element;
 /** input */
-function Element(props: IInputProps): any;
-/** input-group */
-function Element(props: IInputGroupProps): any;
+function Element(props: IInputProps): JSX.Element;
+/** inputGroup */
+function Element(props: IInputGroupProps): JSX.Element;
 /** textarea */
-function Element(props: ITextAreaProps): any;
+function Element(props: ITextAreaProps): JSX.Element;
 /** search */
-function Element(props: ISearchProps): any;
+function Element(props: ISearchProps): JSX.Element;
 /** password */
-function Element(props: IPasswordProps): any;
+function Element(props: IPasswordProps): JSX.Element;
 /** InputNumber */
-function Element(props: IInputNumberProps): any;
+function Element(props: IInputNumberProps): JSX.Element;
 /** Select */
-function Element(props: ISelectProps): any;
-/** datepicker */
-function Element(props: IDatePickerProps): any;
-/** rangepicker */
-function Element(props: IRangePickerProps): any;
+function Element(props: ISelectProps): JSX.Element;
+/** datePicker */
+function Element(props: IDatePickerProps): JSX.Element;
+/** rangePicker */
+function Element(props: IRangePickerProps): JSX.Element;
 /** timePicker */
-function Element(props: ITimePickerProps): any;
+function Element(props: ITimePickerProps): JSX.Element;
 /** TimeRangePicker */
-function Element(props: ITimeRangePickerProps): any;
+function Element(props: ITimeRangePickerProps): JSX.Element;
 /** Checkbox */
-function Element(props: ICheckboxProps): any;
+function Element(props: ICheckboxProps): JSX.Element;
 /** CheckboxGroup */
-function Element(props: ICheckboxGroupProps): any;
+function Element(props: ICheckboxGroupProps): JSX.Element;
 /** RadioGroup */
-function Element(props: IRadioGroupProps): any;
+function Element(props: IRadioGroupProps): JSX.Element;
 /** Rate */
-function Element(props: IRateProps): any;
+function Element(props: IRateProps): JSX.Element;
 /** slider */
-function Element(props: ISliderProps): any;
+function Element(props: ISliderProps): JSX.Element;
 /** switch */
-function Element(props: ISwitchProps): any;
+function Element(props: ISwitchProps): JSX.Element;
 /** upload */
-function Element(props: IUploadProps): any;
+function Element(props: IUploadProps): JSX.Element;
 /** Avatar */
-function Element(props: IAvatarProps): any;
+function Element(props: IAvatarProps): JSX.Element;
 /** Image */
-function Element(props: IImageProps): any;
+function Element(props: IImageProps): JSX.Element;
 /** Tag */
-function Element(props: ITagProps): any;
+function Element(props: ITagProps): JSX.Element;
 /** Progress */
-function Element(props: IProgressProps): any;
+function Element(props: IProgressProps): JSX.Element;
 /** TreeSelect */
-function Element(props: ITreeSelectProps): any;
+function Element(props: ITreeSelectProps): JSX.Element;
 /** Cascader */
-function Element(props: ICascaderProps): any;
+function Element(props: ICascaderProps): JSX.Element;
+/** Custom */
+function Element(props: ICustomProps): JSX.Element;
+
 /** 具体实现 */
-function Element({ type, fieldProps, onChange, ...resetProps }: IProps) {
+function Element({ type, render, fieldProps, onChange, ...resetProps }: IProps) {
   const { children, value, ...resetFieldProps } = (fieldProps as any) ?? {};
   const [val, setVal] = useState(value ?? resetProps.value);
+  /** 转换 form 表单的 change */
   const onChangeFunc = (params: any) => {
     const values = converChangeEvent(params);
     setVal(values);
     resetFieldProps?.onChange?.(values);
     onChange?.(values);
+  };
+  /** 去前后空格，主要给 Search\Password 等组件 onBlur\onPressEnter 时使用 */
+  const onTrimFunc = (params: any) => {
+    let currentVal = params;
+    // 如果明确参数, 不去掉前后空格，则直接返回
+    if (resetFieldProps.isTrim === false) {
+      onChangeFunc?.(currentVal);
+      return;
+    }
+    if (typeof currentVal === 'string') {
+      const v = currentVal?.trim();
+      currentVal = v === '' ? null : v;
+      // onBlur时不触发
+      resetFieldProps?.onSearch?.(currentVal);
+    } else if (currentVal?.target) {
+      const v = currentVal.target?.value?.trim();
+      currentVal = v === '' ? null : v;
+    }
+    onChangeFunc?.(currentVal);
   };
   useEffect(() => {
     setVal(value);
@@ -129,23 +157,46 @@ function Element({ type, fieldProps, onChange, ...resetProps }: IProps) {
     setVal(resetProps.value);
   }, [resetProps.value]);
 
+  // 表单 使用 valuePropName 时用的字段为resetProps?.id
+  useEffect(() => {
+    const baseFieldProps = resetFieldProps as IBaseFieldProps;
+    if (baseFieldProps?.valuePropName) {
+      setVal(resetProps[baseFieldProps?.valuePropName]);
+    }
+  }, [resetProps, resetFieldProps]);
+
   switch (type) {
     case 'text':
-      return <Text {...resetProps} {...resetFieldProps} value={val} />;
-    case 'list-wrap':
-      return <ListWrap {...resetProps} {...resetFieldProps} value={val} />;
+      return <Text {...resetProps} fieldProps={resetFieldProps} value={val} />;
     case 'input':
       return (
-        <Field
+        <InputWrap
           {...resetProps}
+          fieldProps={resetFieldProps}
+          value={val}
+          onChange={onChangeFunc}
+        />
+      );
+    case 'descriptions':
+      return <DescriptionWrap fieldProps={resetFieldProps} />;
+    // 日期类型做一层数据转换
+    case 'datePicker':
+    case 'rangePicker':
+    case 'timePicker':
+    case 'timeRangePicker':
+      return (
+        <TimeConvertWrap
+          {...resetProps}
+          type={type}
           fieldProps={resetFieldProps}
           onChange={onChangeFunc}
           value={val}
-          mode="edit"
         />
       );
     // ======== 以下为 antd 组件 ==========
-    case 'input-group':
+    case 'divider':
+      return <Divider {...resetFieldProps} />;
+    case 'inputGroup':
       return (
         <Input.Group {...resetFieldProps}>
           {/* 禁用状态:使用最终的结果传给外面 */}
@@ -154,32 +205,41 @@ function Element({ type, fieldProps, onChange, ...resetProps }: IProps) {
             onChange: onChangeFunc,
             value: val,
             disabled: resetFieldProps.disabled,
+            readOnly: resetFieldProps.readOnly,
           })}
         </Input.Group>
       );
     case 'textarea':
       return <Input.TextArea {...resetFieldProps} onChange={onChangeFunc} value={val} />;
     case 'search':
-      return <Input.Search {...resetFieldProps} onChange={onChangeFunc} value={val} />;
+      return (
+        <Input.Search
+          {...resetFieldProps}
+          onChange={onChangeFunc}
+          onSearch={onTrimFunc}
+          onBlur={onTrimFunc}
+          value={val}
+        />
+      );
     case 'password':
-      return <Input.Password {...resetFieldProps} onChange={onChangeFunc} value={val} />;
-    case 'input-number':
+      return (
+        <Input.Password
+          {...resetFieldProps}
+          onChange={onChangeFunc}
+          onPressEnter={onTrimFunc}
+          onBlur={onTrimFunc}
+          value={val}
+        />
+      );
+    case 'inputNumber':
       return <InputNumber {...resetFieldProps} onChange={onChangeFunc} value={val} />;
     case 'select':
       return <Select {...resetFieldProps} onChange={onChangeFunc} value={val} />;
-    case 'datepicker':
-      return <DatePicker {...resetFieldProps} onChange={onChangeFunc} value={val} />;
-    case 'rangepicker':
-      return <DatePicker.RangePicker {...resetFieldProps} onChange={onChangeFunc} value={val} />;
-    case 'timePicker':
-      return <TimePicker {...resetFieldProps} onChange={onChangeFunc} value={val} />;
-    case 'timeRangePicker':
-      return <TimePicker.RangePicker {...resetFieldProps} onChange={onChangeFunc} value={val} />;
     case 'checkbox':
       return <Checkbox {...resetFieldProps} onChange={onChangeFunc} checked={val} />;
-    case 'checkbox-group':
+    case 'checkboxGroup':
       return <Checkbox.Group {...resetFieldProps} onChange={onChangeFunc} value={val} />;
-    case 'radio-group':
+    case 'radioGroup':
       return <Radio.Group {...resetFieldProps} onChange={onChangeFunc} value={val} />;
     case 'rate':
       return <Rate {...resetFieldProps} onChange={onChangeFunc} value={val} />;
@@ -189,12 +249,13 @@ function Element({ type, fieldProps, onChange, ...resetProps }: IProps) {
       return <Switch {...resetFieldProps} onChange={onChangeFunc} checked={val} />;
     case 'upload':
       return (
-        <Upload {...resetFieldProps} onChange={onChangeFunc}>
+        <Upload fileList={val} {...resetFieldProps} onChange={onChangeFunc}>
           {children?.({
             ...resetFieldProps,
             onChange: onChangeFunc,
             value: val,
             disabled: resetFieldProps.disabled,
+            readOnly: resetFieldProps.readOnly,
           })}
         </Upload>
       );
@@ -216,18 +277,27 @@ function Element({ type, fieldProps, onChange, ...resetProps }: IProps) {
                 onChange: onChangeFunc,
                 value: val,
                 disabled: resetFieldProps.disabled,
+                readOnly: resetFieldProps.readOnly,
               })
             : val}
         </Tag>
       );
     case 'progress':
       return <Progress {...resetFieldProps} percent={val} />;
-    case 'tree-select':
+    case 'treeSelect':
       return <TreeSelect {...resetFieldProps} value={val} onChange={onChangeFunc} />;
     case 'cascader':
       return <Cascader {...resetFieldProps} value={val} onChange={onChangeFunc} />;
+    case 'custom':
+      return render?.({
+        ...resetFieldProps,
+        onChange: onChangeFunc,
+        value: val,
+        disabled: resetFieldProps.disabled,
+        readOnly: resetFieldProps.readOnly,
+      });
     default:
-      throw new Error('没有找到对应的type类型');
+      throw new Error(`没有找到对应的type类型: ${type}`);
   }
 }
 Element.displayName = 'Element';

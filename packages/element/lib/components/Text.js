@@ -8,9 +8,12 @@ import React, { memo } from 'react';
 import { Typography } from 'antd';
 var Text = function (_a) {
   var value = _a.value,
-    _b = _a.ellipsis,
-    ellipsis = _b === void 0 ? true : _b,
-    style = _a.style;
+    fieldProps = _a.fieldProps;
+  var _b = fieldProps !== null && fieldProps !== void 0 ? fieldProps : {},
+    _c = _b.ellipsis,
+    ellipsis = _c === void 0 ? true : _c,
+    style = _b.style,
+    className = _b.className;
   return React.createElement(
     Typography.Text,
     {
@@ -20,6 +23,7 @@ var Text = function (_a) {
           }
         : false,
       style: style,
+      className: className,
     },
     value,
   );

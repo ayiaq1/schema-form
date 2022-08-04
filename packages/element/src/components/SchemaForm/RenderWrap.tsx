@@ -5,7 +5,7 @@
  * @LastModifiedBy: yihuang
  */
 import React, { useEffect, useState } from 'react';
-import type { ISchemaChildrenProps } from './typings';
+import { ISchemaChildrenProps } from './typings';
 import { converChangeEvent } from './utils';
 
 interface IProps extends ISchemaChildrenProps {
@@ -13,7 +13,16 @@ interface IProps extends ISchemaChildrenProps {
   render?: (props: ISchemaChildrenProps) => React.ReactNode;
 }
 
-const RenderWrap = ({ disabled, render, values, initialValues, onChange, fieldProps }: IProps) => {
+const RenderWrap = ({
+  disabled,
+  readOnly,
+  render,
+  values,
+  value,
+  initialValues,
+  onChange,
+  fieldProps,
+}: IProps) => {
   const [val, setVal] = useState();
   const onChangeFunc = (params: any) => {
     const str = converChangeEvent(params);
@@ -24,17 +33,19 @@ const RenderWrap = ({ disabled, render, values, initialValues, onChange, fieldPr
   useEffect(() => {
     setVal(values);
   }, [values]);
-
   useEffect(() => {
     setVal(fieldProps.value);
   }, [fieldProps.value]);
-
+  useEffect(() => {
+    setVal(value);
+  }, [value]);
   return (
     <>
       {render?.({
         value: val,
         onChange: onChangeFunc,
         disabled,
+        readOnly,
         initialValues,
       })}
     </>

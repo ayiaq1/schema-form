@@ -5,15 +5,15 @@
  * @LastModifiedBy: yihuang
  */
 import React, { Fragment, memo } from 'react';
-import type { FormProps } from 'antd/lib/form';
-import type { ISchemaProps, IFormItem } from './typings';
+import { FormProps } from 'antd/lib/form';
+import { ISchemaProps, IFormItem } from './typings';
 import ItemWrap from './ItemWrap';
 import ItemGroupWrap from './ItemGroupWrap';
 
 const CustomLayout = ({
-  type = 'custom',
   options = [],
   disabled: formDisabled,
+  readOnly: formReadonly,
   form,
   ...formReset
 }: FormProps & ISchemaProps) => {
@@ -25,6 +25,7 @@ const CustomLayout = ({
             {item.type === 'group' ? (
               <ItemGroupWrap
                 {...item}
+                formReadonly={formReadonly}
                 formDisabled={formDisabled}
                 initialValues={formReset.initialValues}
               />
@@ -33,6 +34,7 @@ const CustomLayout = ({
                 {...item}
                 values={item?.name && formReset?.initialValues?.[item?.name as any]}
                 formDisabled={formDisabled}
+                formReadonly={formReadonly}
                 initialValues={formReset.initialValues}
               />
             )}

@@ -1,5 +1,4 @@
-import React from 'react';
-import type { CSSProperties } from 'react';
+import React, { CSSProperties } from 'react';
 import type { IFormInheritProps, IFormItem } from './typings';
 interface IProps extends IFormInheritProps {
   options: IFormItem[];
@@ -7,6 +6,6 @@ interface IProps extends IFormInheritProps {
   style?: CSSProperties;
 }
 declare const _default: React.MemoExoticComponent<
-  ({ className, style, options, formDisabled, initialValues }: IProps) => JSX.Element
+  ({ className, style, options, formDisabled, formReadonly, initialValues }: IProps) => JSX.Element
 >;
 export default _default;

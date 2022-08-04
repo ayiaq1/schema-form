@@ -5,11 +5,12 @@
  * @LastModifiedBy: yihuang
  */
 import React, { useState, useCallback } from 'react';
-import { Button, Space, Form, Tree, Spin } from 'antd';
+import { Button, Space, Form, Tree, Spin, Tag } from 'antd';
 import { SchemaForm } from '../src';
 import { useRequest } from 'ahooks';
-import { initValues } from './config';
+// import { initValues } from './config';
 import { getDetails, getTreeData, getSelectData } from './service';
+import { SelectData, TreeData } from './config';
 
 interface IValuesProps {
   inp: string;
@@ -21,9 +22,11 @@ interface IValuesProps {
 const SchemaDemoCustom = () => {
   const [form] = Form.useForm();
 
+  const { data: initialValues } = useRequest(getDetails);
   const getStatusFunc = useCallback(({ sel }: IValuesProps) => {
     return {
       disabled: sel === 'disabled',
+      readOnly: sel === 'readOnly',
       style: {
         display: sel === 'hide' ? 'none' : 'inline-flex',
       },
@@ -38,19 +41,22 @@ const SchemaDemoCustom = () => {
   const { data: treeData = [], loading: treeLoading } = useRequest(getTreeData, {
     onSuccess: () => {
       setInputState(getStatusFunc(data));
-      form.setFieldsValue(data);
+      setTimeout(() => {
+        form.setFieldsValue(data);
+      }, 1500);
     },
   });
   const { data: roleList = [] } = useRequest(getSelectData);
 
   // form values change
   const onValuesChange = (values: IValuesProps) => {
-    console.log('schema custom demo onValuesChange', values);
     const formData = form.getFieldsValue();
     setInputState(getStatusFunc({ ...data, ...formData }));
   };
   const onFinish = (values: IValuesProps) => {
-    console.log('schema custom demo onFinish values', values);
+    form.validateFields().then((formData) => {
+      console.log('schema demo onFinish then formData', formData);
+    });
   };
   const onReset = () => {
     form.resetFields();
@@ -60,8 +66,9 @@ const SchemaDemoCustom = () => {
   return (
     <SchemaForm
       type="custom"
-      initialValues={initValues}
+      initialValues={initialValues}
       disabled={inputState?.disabled}
+      readOnly={inputState?.readOnly}
       labelAlign="right"
       form={form}
       onFinish={onFinish}
@@ -79,6 +86,7 @@ const SchemaDemoCustom = () => {
           ],
           fieldProps: {
             disabled: false,
+            readOnly: false,
             options: [
               {
                 label: '显示输入',
@@ -91,6 +99,10 @@ const SchemaDemoCustom = () => {
               {
                 label: '禁用表单',
                 value: 'disabled',
+              },
+              {
+                label: '只读表单',
+                value: 'readOnly',
               },
             ],
           },
@@ -124,6 +136,14 @@ const SchemaDemoCustom = () => {
           },
         },
         {
+          label: '下拉框',
+          name: 'select',
+          type: 'select',
+          fieldProps: {
+            options: SelectData as any,
+          },
+        },
+        {
           label: '测试多选',
           name: 'multipleSelect',
           type: 'select',
@@ -134,6 +154,7 @@ const SchemaDemoCustom = () => {
             },
           ],
           fieldProps: {
+            readOnly: false,
             mode: 'multiple',
             showSearch: true,
             allowClear: true,
@@ -177,7 +198,7 @@ const SchemaDemoCustom = () => {
         {
           label: '下拉树',
           name: 'treeSelect',
-          type: 'tree-select',
+          type: 'treeSelect',
           rules: [
             {
               message: '必填参数',
@@ -206,10 +227,10 @@ const SchemaDemoCustom = () => {
               required: true,
             },
           ],
-          render: ({ value, disabled, onChange }) => {
+          render: ({ value, readOnly, disabled, onChange }) => {
             return (
               <Spin spinning={treeLoading}>
-                {treeData?.length ? (
+                {treeData?.length && !readOnly ? (
                   <Tree
                     disabled={disabled}
                     height={300}
@@ -224,6 +245,13 @@ const SchemaDemoCustom = () => {
                       children: 'childElementList',
                     }}
                   />
+                ) : readOnly ? (
+                  <>
+                    只读自己渲染value:
+                    {value?.map((tag) => (
+                      <Tag key={tag}>{tag}</Tag>
+                    ))}
+                  </>
                 ) : null}
               </Spin>
             );

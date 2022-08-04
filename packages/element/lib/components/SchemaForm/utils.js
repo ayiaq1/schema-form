@@ -6,11 +6,9 @@
  */
 /** 转换所有UI组件的onChange数据 */
 export var converChangeEvent = function (params) {
-  var str;
+  var str = params;
   if (params === null || params === void 0 ? void 0 : params.target) {
     str = params.target.value;
-  } else {
-    str = params;
   }
   return str;
 };

@@ -35,20 +35,19 @@ import React, { memo } from 'react';
 import { Col, Row } from 'antd';
 import ItemGroupWrap from './ItemGroupWrap';
 import ItemWrap from './ItemWrap';
-import omit from 'omit.js';
+import omit from '../../javascript/omit';
 var RowLayout = function (_a) {
-  var _b = _a.type,
-    type = _b === void 0 ? 'row' : _b,
-    _c = _a.options,
-    options = _c === void 0 ? [] : _c,
+  var _b = _a.options,
+    options = _b === void 0 ? [] : _b,
     formDisabled = _a.disabled,
+    formReadonly = _a.readOnly,
     form = _a.form,
-    formReset = __rest(_a, ['type', 'options', 'disabled', 'form']);
-  var _d = formReset,
-    _e = _d.gutter,
-    gutter = _e === void 0 ? 16 : _e,
-    _f = _d.span,
-    span = _f === void 0 ? 6 : _f;
+    formReset = __rest(_a, ['options', 'disabled', 'readOnly', 'form']);
+  var _c = formReset,
+    _d = _c.gutter,
+    gutter = _d === void 0 ? 16 : _d,
+    _e = _c.span,
+    span = _e === void 0 ? 6 : _e;
   return React.createElement(
     Row,
     { gutter: gutter },
@@ -75,6 +74,7 @@ var RowLayout = function (_a) {
               ItemGroupWrap,
               __assign({}, reset, {
                 formDisabled: formDisabled,
+                formReadonly: formReadonly,
                 initialValues: formReset.initialValues,
               }),
             )
@@ -90,6 +90,7 @@ var RowLayout = function (_a) {
                     ? void 0
                     : _d[reset === null || reset === void 0 ? void 0 : reset.name]),
                 formDisabled: formDisabled,
+                formReadonly: formReadonly,
                 initialValues: formReset.initialValues,
               }),
             ),

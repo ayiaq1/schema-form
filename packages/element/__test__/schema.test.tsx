@@ -11,7 +11,7 @@ import renderer from 'react-test-renderer';
 import SchemaForm from '../src/components/SchemaForm';
 import mountTest from '../tests/mountTest';
 import { Form, Button, Space } from 'antd';
-import { subtractRangeDays, waitForComponentToPaint } from '../tests/utils';
+import { waitForComponentToPaint } from '../tests/utils';
 
 const TextItem: IFormItem = {
   label: 'text',
@@ -24,11 +24,11 @@ const InputItem: IFormItem = {
   name: 'input',
   type: 'input',
 };
-const IDateItem: IFormItem = {
-  label: 'rangepicker',
-  name: 'rangepicker',
-  type: 'rangepicker',
-};
+// const IDateItem: IFormItem = {
+//   label: 'rangePicker',
+//   name: 'rangePicker',
+//   type: 'rangePicker',
+// };
 // Element 组件
 describe('SchemaForm Element', () => {
   mountTest(SchemaForm);
@@ -60,7 +60,8 @@ describe('SchemaForm Element', () => {
       );
     };
     const wrapper = mount(<Demo />);
-    const formItems = wrapper.find('.ant-row.ant-form-item');
+    await waitForComponentToPaint(wrapper);
+    const formItems = wrapper.find('.ant-form-item');
     expect(formItems.length).toBe(2);
     expect(formItems.at(0).find('label').text()).toBe(initialValues.text);
     expect(formItems.at(1).find('input').prop('value')).toBe(initialValues.input);
@@ -74,12 +75,10 @@ describe('SchemaForm Element', () => {
     const initialValues = {
       text: 'text',
       input: 'input',
-      rangepicker: subtractRangeDays(7),
     };
     const ChangeValues = {
       text: 'text1',
       input: 'input2',
-      rangepicker: subtractRangeDays(1),
     };
     const Demo = () => {
       const [form] = Form.useForm();
@@ -114,7 +113,7 @@ describe('SchemaForm Element', () => {
           form={form}
           type="custom"
           initialValues={initialValues}
-          options={[TextItem, InputItem, IDateItem, ResetItem]}
+          options={[TextItem, InputItem, ResetItem]}
           onValuesChange={onValuesChange}
         />
       );
@@ -124,11 +123,9 @@ describe('SchemaForm Element', () => {
     wrapper.find('.change-btn').first().simulate('click');
     await waitForComponentToPaint(wrapper);
     wrapper.find('.submit-btn').first().simulate('click');
-    await waitForComponentToPaint(wrapper);
     expect(onFinishFunc()).toEqual(ChangeValues);
     // 重置数据
     wrapper.find('.reset-btn').first().simulate('click');
-    await waitForComponentToPaint(wrapper);
     // 重置之后，数据应该为初始值
     expect(onResetFunc()).toEqual(initialValues);
   });
@@ -173,21 +170,5 @@ describe('SchemaForm Custom', () => {
   it('Save custom snapshot', async () => {
     const wrapperRender = renderer.create(<Demo />);
     expect(wrapperRender.toJSON()).toMatchSnapshot();
-  });
-  it('custom render props', async () => {
-    const ChangeValue = 'btn-change-clik';
-
-    const wrapper = mount(<Demo />);
-    const changeBtn = wrapper.find('.change-btn').first();
-    expect(changeBtn.getDOMNode()).toHaveProperty('disabled');
-    // 取消禁用
-    wrapper.find('.cancel-btn').first().simulate('click');
-    await waitForComponentToPaint(wrapper);
-    expect(changeBtn.getDOMNode()).toHaveProperty('disabled', false);
-    // 修改数据
-    changeBtn.simulate('click', { target: { value: ChangeValue } });
-    await waitForComponentToPaint(wrapper);
-    expect(onValuesChange).toBeCalledTimes(1);
-    expect(changeBtn.text()).toBe(ChangeValue);
   });
 });

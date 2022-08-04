@@ -1,8 +1,9 @@
 import React from 'react';
-import type { IItemWrapProps } from './typings';
+import { IItemWrapProps } from './typings';
 declare const _default: React.MemoExoticComponent<
   ({
     formDisabled,
+    formReadonly,
     initialValues,
     values,
     render,

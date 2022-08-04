@@ -1,6 +1,6 @@
 /// <reference types="react" />
-import type { FormInstance, FormItemProps } from 'antd/lib/form';
-import type {
+import { FormInstance, FormProps, FormItemProps } from 'antd/lib/form';
+import {
   IText,
   IInputProps,
   ICustom,
@@ -33,8 +33,6 @@ import type {
   ISliderProps,
   ISwitch,
   ISwitchProps,
-  IListWrapProps,
-  IListWrap,
   ITimePicker,
   ITimePickerProps,
   ITimeRangePicker,
@@ -57,12 +55,20 @@ import type {
   ICascaderProps,
   ITreeSelect,
   ITreeSelectProps,
+  IDivider,
+  IDividerProps,
+  IDescriptions,
+  IDescriptionsProps,
 } from '../../typings';
 export interface IBaseItem {
   /** 是否禁用 */
   disabled?: boolean;
+  /** 是否只读 */
+  readOnly?: boolean;
   /** 只有custom类型 才有的渲染children方法 */
   render?: (props: ISchemaChildrenProps) => React.ReactNode;
+  /** form.item 的包裹器。可以为item套一层外壳 */
+  itemWraper?: () => React.ReactNode;
   /** 透传组件参数 */
   fieldProps?: unknown;
   /** col 的占位,如果item有。以item为结果 */
@@ -72,11 +78,14 @@ export interface IBaseItem {
 }
 declare type IUnionType =
   | ({
+      type: IDescriptions;
+    } & IDescriptionsProps)
+  | ({
+      type: IDivider;
+    } & IDividerProps)
+  | ({
       type: IText;
     } & ITextProps)
-  | ({
-      type: IListWrap;
-    } & IListWrapProps)
   | ({
       type: IInput;
     } & IInputProps)
@@ -174,17 +183,22 @@ export declare type IUnionLayoutType = IRowLayoutType | ICustomLayoutType;
 export interface ISchemaBaseProps {
   /** 是否禁用，如果item有，以item的为结果 */
   disabled?: boolean;
+  /** 是否只能预览，如果item有，以item的为结果 */
+  readOnly?: boolean;
   type: 'row' | 'custom';
-  /** 布局类型 row: 使用默认的 Row 布局，custom: 直接渲染。 */
+  /** 布局类型 row: 使用默认的 Row 布局，custom: 可以增加group混合布局。 */
   /** 渲染列表 */
   options: IFormItem[];
   /** Form.useForm() */
   form?: FormInstance;
   initialValues?: Record<string, any>;
 }
-export declare type ISchemaProps = ISchemaBaseProps & IUnionLayoutType;
-/** 透传给子组件children的参数: disabled|initialValues */
-export declare type ISchemaChildrenProps = Pick<ISchemaBaseProps, 'disabled' | 'initialValues'> & {
+export declare type ISchemaProps = ISchemaBaseProps & IUnionLayoutType & FormProps;
+/** 透传给子组件children的参数: disabled、readOnly、 initialValues */
+export declare type ISchemaChildrenProps = Pick<
+  ISchemaBaseProps,
+  'disabled' | 'readOnly' | 'initialValues'
+> & {
   /** form的填充值 */
   value?: any;
   /** 自定义节点变更时，回调使用 */
@@ -194,9 +208,12 @@ export declare type ISchemaChildrenProps = Pick<ISchemaBaseProps, 'disabled' | '
 /** 需要继承的form参数 */
 export declare type IFormInheritProps = {
   formDisabled?: boolean;
+  formReadonly?: boolean;
   initialValues?: any;
   values?: any;
 };
 /** item节点包裹器的参数 */
-export declare type IItemWrapProps = IFormItem & IFormInheritProps;
+export declare type IItemWrapProps = Omit<IFormItem & IFormInheritProps, 'render'> & {
+  render?: (props: ISchemaChildrenProps) => React.ReactNode;
+};
 export {};

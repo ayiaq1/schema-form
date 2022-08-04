@@ -8,18 +8,22 @@ import React, { memo } from 'react';
 import { Typography } from 'antd';
 import type { ITextProps } from '../typings';
 
-const Text = ({ value, ellipsis = true, style }: ITextProps) => (
-  <Typography.Text
-    ellipsis={
-      ellipsis
-        ? {
-            tooltip: ellipsis,
-          }
-        : false
-    }
-    style={style}
-  >
-    {value}
-  </Typography.Text>
-);
+const Text = ({ value, fieldProps }: ITextProps) => {
+  const { ellipsis = true, style, className } = fieldProps ?? {};
+  return (
+    <Typography.Text
+      ellipsis={
+        ellipsis
+          ? {
+              tooltip: ellipsis,
+            }
+          : false
+      }
+      style={style}
+      className={className}
+    >
+      {value}
+    </Typography.Text>
+  );
+};
 export default memo(Text);

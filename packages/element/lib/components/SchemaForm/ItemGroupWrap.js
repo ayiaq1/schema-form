@@ -25,6 +25,7 @@ var ItemGroupWrap = function (_a) {
     style = _a.style,
     options = _a.options,
     formDisabled = _a.formDisabled,
+    formReadonly = _a.formReadonly,
     initialValues = _a.initialValues;
   return React.createElement(
     'div',
@@ -53,6 +54,7 @@ var ItemGroupWrap = function (_a) {
                     ? void 0
                     : initialValues[item === null || item === void 0 ? void 0 : item.name]),
                 formDisabled: formDisabled,
+                formReadonly: formReadonly,
                 initialValues: initialValues,
               },
             ),

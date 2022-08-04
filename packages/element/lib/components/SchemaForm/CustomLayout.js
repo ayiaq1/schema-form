@@ -35,13 +35,12 @@ import React, { Fragment, memo } from 'react';
 import ItemWrap from './ItemWrap';
 import ItemGroupWrap from './ItemGroupWrap';
 var CustomLayout = function (_a) {
-  var _b = _a.type,
-    type = _b === void 0 ? 'custom' : _b,
-    _c = _a.options,
-    options = _c === void 0 ? [] : _c,
+  var _b = _a.options,
+    options = _b === void 0 ? [] : _b,
     formDisabled = _a.disabled,
+    formReadonly = _a.readOnly,
     form = _a.form,
-    formReset = __rest(_a, ['type', 'options', 'disabled', 'form']);
+    formReset = __rest(_a, ['options', 'disabled', 'readOnly', 'form']);
   return React.createElement(
     React.Fragment,
     null,
@@ -62,6 +61,7 @@ var CustomLayout = function (_a) {
           ? React.createElement(
               ItemGroupWrap,
               __assign({}, item, {
+                formReadonly: formReadonly,
                 formDisabled: formDisabled,
                 initialValues: formReset.initialValues,
               }),
@@ -78,6 +78,7 @@ var CustomLayout = function (_a) {
                     ? void 0
                     : _c[item === null || item === void 0 ? void 0 : item.name]),
                 formDisabled: formDisabled,
+                formReadonly: formReadonly,
                 initialValues: formReset.initialValues,
               }),
             ),

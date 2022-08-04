@@ -1,19 +1,31 @@
-// https://developer.mozilla.org/zh-CN/docs/Web/API/Fetch_API/Using_Fetch
-// Example POST method implementation:
-async function http(url = '', data = {}, method?: string) {
-  // Default options are marked with *
-  const response = await fetch(url, {
-    method, // *GET, POST, PUT, DELETE, etc.
-    mode: 'cors', // no-cors, *cors, same-origin
-    credentials: 'include', // include, *same-origin, omit
-    headers: {
-      'Content-Type': 'application/json',
-    },
+const request = (url: string, options?: any) => {
+  return new Promise<any>((resolve) => {
+    fetch(url, {
+      credentials: 'include',
+      mode: 'cors',
+      ...options,
+    }).then((response) => {
+      if (response.status === 200) {
+        return resolve(response.json());
+      } else {
+        throw new Error('Something went wrong on api server!');
+      }
+    });
   });
-  return response.json(); // parses JSON response into native JavaScript objects
-}
+};
 
-export const get = async (url: any, data?: any) => {
-  const response = await http(url, data, 'GET');
+export const get = async (url: any, params?: any) => {
+  const response = await request(url, {
+    ...params,
+    method: 'GET',
+  });
+  return response.respData;
+};
+
+export const post = async (url: any, params?: any) => {
+  const response = await request(url, {
+    ...params,
+    method: 'POST',
+  });
   return response.respData;
 };

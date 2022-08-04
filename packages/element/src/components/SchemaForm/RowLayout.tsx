@@ -6,16 +6,16 @@
  */
 import React, { memo } from 'react';
 import { Col, Row } from 'antd';
-import type { FormProps } from 'antd/lib/form';
-import type { ISchemaProps } from './typings';
+import { FormProps } from 'antd/lib/form';
+import { ISchemaProps } from './typings';
 import ItemGroupWrap from './ItemGroupWrap';
 import ItemWrap from './ItemWrap';
-import omit from 'omit.js';
+import omit from '../../javascript/omit';
 
 const RowLayout = ({
-  type = 'row',
   options = [],
   disabled: formDisabled,
+  readOnly: formReadonly,
   form,
   ...formReset
 }: FormProps & ISchemaProps) => {
@@ -30,6 +30,7 @@ const RowLayout = ({
               <ItemGroupWrap
                 {...reset}
                 formDisabled={formDisabled}
+                formReadonly={formReadonly}
                 initialValues={formReset.initialValues}
               />
             ) : (
@@ -37,6 +38,7 @@ const RowLayout = ({
                 {...reset}
                 values={reset?.name && formReset?.initialValues?.[reset?.name as any]}
                 formDisabled={formDisabled}
+                formReadonly={formReadonly}
                 initialValues={formReset.initialValues}
               />
             )}

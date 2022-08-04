@@ -1,16 +1,21 @@
-import React, { memo } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Form } from 'antd';
-import type { FormProps } from 'antd/lib/form';
-import type { ISchemaProps } from './typings';
+import { ISchemaProps } from './typings';
 import RowLayout from './RowLayout';
 import CustomLayout from './CustomLayout';
 
-const SchemaForm = ({ type = 'row', ...resetProps }: FormProps & ISchemaProps) => {
+const SchemaForm = ({ type = 'row', ...resetProps }: ISchemaProps) => {
   const { options = [], form, ...formReset } = resetProps;
+  const [initialValues, setInitialValues] = useState(resetProps.initialValues);
+  useEffect(() => {
+    if (resetProps?.initialValues) {
+      setInitialValues(resetProps?.initialValues);
+    }
+  }, [resetProps?.initialValues]);
   return (
     <>
       {options?.length ? (
-        <Form {...formReset} form={form}>
+        <Form initialValues={initialValues} scrollToFirstError={true} {...formReset} form={form}>
           {type === 'row' ? (
             <RowLayout type={type} {...resetProps} />
           ) : (
@@ -22,4 +27,4 @@ const SchemaForm = ({ type = 'row', ...resetProps }: FormProps & ISchemaProps) =
   );
 };
 SchemaForm.displayName = 'SchemaForm';
-export default memo(SchemaForm);
+export default SchemaForm;

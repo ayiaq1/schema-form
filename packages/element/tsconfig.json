@@ -18,8 +18,10 @@
     "../example/**/*",
     "../__test__/**/*",
     "../tests/**/*",
-    "typings.ts",
-    "*.d.ts"
+    "typings/**/*",
+    "typings.d.ts",
+    ".eslintrc.js",
+    "*.config.js"
   ],
   "exclude": ["node_modules", "dist", "lib"]
 }

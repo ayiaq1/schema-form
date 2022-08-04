@@ -34,7 +34,6 @@ var __rest =
 import React, { useEffect, useState } from 'react';
 import {
   Select,
-  DatePicker,
   Checkbox,
   Input,
   InputNumber,
@@ -42,7 +41,6 @@ import {
   Rate,
   Slider,
   Switch,
-  TimePicker,
   Upload,
   Image,
   Tag,
@@ -50,18 +48,21 @@ import {
   Cascader,
   TreeSelect,
   Avatar,
+  Divider,
 } from 'antd';
-import Field from './Field';
-import Text from './Text';
-import ListWrap from './ListWrap';
 import { converChangeEvent } from './SchemaForm/utils';
+import TimeConvertWrap from './TimeConvertWrap';
+import InputWrap from './InputWrap';
+import Text from './Text';
+import DescriptionWrap from './DescriptionWrap';
 /** 具体实现 */
 function Element(_a) {
   var _b, _c;
   var type = _a.type,
+    render = _a.render,
     fieldProps = _a.fieldProps,
     onChange = _a.onChange,
-    resetProps = __rest(_a, ['type', 'fieldProps', 'onChange']);
+    resetProps = __rest(_a, ['type', 'render', 'fieldProps', 'onChange']);
   var _d = (_b = fieldProps) !== null && _b !== void 0 ? _b : {},
     children = _d.children,
     value = _d.value,
@@ -69,6 +70,7 @@ function Element(_a) {
   var _e = useState(value !== null && value !== void 0 ? value : resetProps.value),
     val = _e[0],
     setVal = _e[1];
+  /** 转换 form 表单的 change */
   var onChangeFunc = function (params) {
     var _a;
     var values = converChangeEvent(params);
@@ -80,6 +82,35 @@ function Element(_a) {
       ? void 0
       : _a.call(resetFieldProps, values);
     onChange === null || onChange === void 0 ? void 0 : onChange(values);
+  };
+  /** 去前后空格，主要给 Search\Password 等组件 onBlur\onPressEnter 时使用 */
+  var onTrimFunc = function (params) {
+    var _a, _b, _c;
+    var currentVal = params;
+    // 如果明确参数, 不去掉前后空格，则直接返回
+    if (resetFieldProps.isTrim === false) {
+      onChangeFunc === null || onChangeFunc === void 0 ? void 0 : onChangeFunc(currentVal);
+      return;
+    }
+    if (typeof currentVal === 'string') {
+      var v = currentVal === null || currentVal === void 0 ? void 0 : currentVal.trim();
+      currentVal = v === '' ? null : v;
+      // onBlur时不触发
+      (_a =
+        resetFieldProps === null || resetFieldProps === void 0
+          ? void 0
+          : resetFieldProps.onSearch) === null || _a === void 0
+        ? void 0
+        : _a.call(resetFieldProps, currentVal);
+    } else if (currentVal === null || currentVal === void 0 ? void 0 : currentVal.target) {
+      var v =
+        (_c = (_b = currentVal.target) === null || _b === void 0 ? void 0 : _b.value) === null ||
+        _c === void 0
+          ? void 0
+          : _c.trim();
+      currentVal = v === '' ? null : v;
+    }
+    onChangeFunc === null || onChangeFunc === void 0 ? void 0 : onChangeFunc(currentVal);
   };
   useEffect(
     function () {
@@ -94,26 +125,59 @@ function Element(_a) {
     },
     [resetProps.value],
   );
+  // 表单 使用 valuePropName 时用的字段为resetProps?.id
+  useEffect(
+    function () {
+      var baseFieldProps = resetFieldProps;
+      if (
+        baseFieldProps === null || baseFieldProps === void 0 ? void 0 : baseFieldProps.valuePropName
+      ) {
+        setVal(
+          resetProps[
+            baseFieldProps === null || baseFieldProps === void 0
+              ? void 0
+              : baseFieldProps.valuePropName
+          ],
+        );
+      }
+    },
+    [resetProps, resetFieldProps],
+  );
   switch (type) {
     case 'text':
-      return React.createElement(Text, __assign({}, resetProps, resetFieldProps, { value: val }));
-    case 'list-wrap':
       return React.createElement(
-        ListWrap,
-        __assign({}, resetProps, resetFieldProps, { value: val }),
+        Text,
+        __assign({}, resetProps, { fieldProps: resetFieldProps, value: val }),
       );
     case 'input':
       return React.createElement(
-        Field,
+        InputWrap,
         __assign({}, resetProps, {
+          fieldProps: resetFieldProps,
+          value: val,
+          onChange: onChangeFunc,
+        }),
+      );
+    case 'descriptions':
+      return React.createElement(DescriptionWrap, { fieldProps: resetFieldProps });
+    // 日期类型做一层数据转换
+    case 'datePicker':
+    case 'rangePicker':
+    case 'timePicker':
+    case 'timeRangePicker':
+      return React.createElement(
+        TimeConvertWrap,
+        __assign({}, resetProps, {
+          type: type,
           fieldProps: resetFieldProps,
           onChange: onChangeFunc,
           value: val,
-          mode: 'edit',
         }),
       );
     // ======== 以下为 antd 组件 ==========
-    case 'input-group':
+    case 'divider':
+      return React.createElement(Divider, __assign({}, resetFieldProps));
+    case 'inputGroup':
       return React.createElement(
         Input.Group,
         __assign({}, resetFieldProps),
@@ -124,6 +188,7 @@ function Element(_a) {
                 onChange: onChangeFunc,
                 value: val,
                 disabled: resetFieldProps.disabled,
+                readOnly: resetFieldProps.readOnly,
               }),
             ),
       );
@@ -135,14 +200,24 @@ function Element(_a) {
     case 'search':
       return React.createElement(
         Input.Search,
-        __assign({}, resetFieldProps, { onChange: onChangeFunc, value: val }),
+        __assign({}, resetFieldProps, {
+          onChange: onChangeFunc,
+          onSearch: onTrimFunc,
+          onBlur: onTrimFunc,
+          value: val,
+        }),
       );
     case 'password':
       return React.createElement(
         Input.Password,
-        __assign({}, resetFieldProps, { onChange: onChangeFunc, value: val }),
+        __assign({}, resetFieldProps, {
+          onChange: onChangeFunc,
+          onPressEnter: onTrimFunc,
+          onBlur: onTrimFunc,
+          value: val,
+        }),
       );
-    case 'input-number':
+    case 'inputNumber':
       return React.createElement(
         InputNumber,
         __assign({}, resetFieldProps, { onChange: onChangeFunc, value: val }),
@@ -152,37 +227,17 @@ function Element(_a) {
         Select,
         __assign({}, resetFieldProps, { onChange: onChangeFunc, value: val }),
       );
-    case 'datepicker':
-      return React.createElement(
-        DatePicker,
-        __assign({}, resetFieldProps, { onChange: onChangeFunc, value: val }),
-      );
-    case 'rangepicker':
-      return React.createElement(
-        DatePicker.RangePicker,
-        __assign({}, resetFieldProps, { onChange: onChangeFunc, value: val }),
-      );
-    case 'timePicker':
-      return React.createElement(
-        TimePicker,
-        __assign({}, resetFieldProps, { onChange: onChangeFunc, value: val }),
-      );
-    case 'timeRangePicker':
-      return React.createElement(
-        TimePicker.RangePicker,
-        __assign({}, resetFieldProps, { onChange: onChangeFunc, value: val }),
-      );
     case 'checkbox':
       return React.createElement(
         Checkbox,
         __assign({}, resetFieldProps, { onChange: onChangeFunc, checked: val }),
       );
-    case 'checkbox-group':
+    case 'checkboxGroup':
       return React.createElement(
         Checkbox.Group,
         __assign({}, resetFieldProps, { onChange: onChangeFunc, value: val }),
       );
-    case 'radio-group':
+    case 'radioGroup':
       return React.createElement(
         Radio.Group,
         __assign({}, resetFieldProps, { onChange: onChangeFunc, value: val }),
@@ -205,7 +260,7 @@ function Element(_a) {
     case 'upload':
       return React.createElement(
         Upload,
-        __assign({}, resetFieldProps, { onChange: onChangeFunc }),
+        __assign({ fileList: val }, resetFieldProps, { onChange: onChangeFunc }),
         children === null || children === void 0
           ? void 0
           : children(
@@ -213,6 +268,7 @@ function Element(_a) {
                 onChange: onChangeFunc,
                 value: val,
                 disabled: resetFieldProps.disabled,
+                readOnly: resetFieldProps.readOnly,
               }),
             ),
       );
@@ -243,13 +299,14 @@ function Element(_a) {
                 onChange: onChangeFunc,
                 value: val,
                 disabled: resetFieldProps.disabled,
+                readOnly: resetFieldProps.readOnly,
               }),
             )
           : val,
       );
     case 'progress':
       return React.createElement(Progress, __assign({}, resetFieldProps, { percent: val }));
-    case 'tree-select':
+    case 'treeSelect':
       return React.createElement(
         TreeSelect,
         __assign({}, resetFieldProps, { value: val, onChange: onChangeFunc }),
@@ -259,8 +316,19 @@ function Element(_a) {
         Cascader,
         __assign({}, resetFieldProps, { value: val, onChange: onChangeFunc }),
       );
+    case 'custom':
+      return render === null || render === void 0
+        ? void 0
+        : render(
+            __assign(__assign({}, resetFieldProps), {
+              onChange: onChangeFunc,
+              value: val,
+              disabled: resetFieldProps.disabled,
+              readOnly: resetFieldProps.readOnly,
+            }),
+          );
     default:
-      throw new Error('没有找到对应的type类型');
+      throw new Error('\u6CA1\u6709\u627E\u5230\u5BF9\u5E94\u7684type\u7C7B\u578B: '.concat(type));
   }
 }
 Element.displayName = 'Element';

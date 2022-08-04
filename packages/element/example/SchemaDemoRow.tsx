@@ -9,7 +9,7 @@ import { UserOutlined, UploadOutlined, SyncOutlined } from '@ant-design/icons';
 import { Button, Space, Form } from 'antd';
 import { disabledRangeTime } from './utils';
 import { SchemaForm, Element } from '../src';
-import { CascaderOptions, initValues, TreeData } from './config';
+import { CascaderData, initValues, SelectData, TreeData } from './config';
 import moment from 'moment';
 
 interface IValuesProps {
@@ -24,6 +24,7 @@ const SchemaDemo = () => {
   const getStatusFunc = useCallback(({ sel }: IValuesProps) => {
     return {
       disabled: sel === 'disabled',
+      readOnly: sel === 'readOnly',
       style: {
         display: sel === 'hide' ? 'none' : 'inline-flex',
       },
@@ -32,12 +33,10 @@ const SchemaDemo = () => {
   const [inputState, setInputState] = useState(getStatusFunc(initValues));
   // form values change
   const onValuesChange = (values: IValuesProps) => {
-    console.log('schema demo onValuesChange values', values);
     const formData = form.getFieldsValue();
     setInputState(getStatusFunc({ ...initValues, ...formData }));
   };
   const onFinish = (values: IValuesProps) => {
-    console.log('schema demo onFinish values', values);
     form.validateFields().then((formData) => {
       console.log('schema demo onFinish then formData', formData);
     });
@@ -50,11 +49,11 @@ const SchemaDemo = () => {
   return (
     <SchemaForm
       disabled={inputState.disabled}
+      readOnly={inputState?.readOnly}
       type="row"
       initialValues={initValues}
       labelAlign="right"
       form={form}
-      span={8}
       labelCol={{ span: 6 }}
       wrapperCol={{ span: 18 }}
       onFinish={onFinish}
@@ -66,6 +65,7 @@ const SchemaDemo = () => {
           type: 'select',
           fieldProps: {
             disabled: false,
+            readOnly: false,
             options: [
               {
                 label: '显示输入',
@@ -78,6 +78,10 @@ const SchemaDemo = () => {
               {
                 label: '禁用表单',
                 value: 'disabled',
+              },
+              {
+                label: '只读表单',
+                value: 'readOnly',
               },
             ],
           },
@@ -105,15 +109,16 @@ const SchemaDemo = () => {
           type: 'text',
         },
         {
-          label: 'input-group',
+          label: 'inputGroup',
           name: 'inputGroup',
-          type: 'input-group',
+          type: 'inputGroup',
           fieldProps: {
             compact: true,
-            children: ({ disabled, onChange }) => (
+            children: ({ disabled, value, onChange }) => (
               <>
                 <Element
                   type="input"
+                  value={value}
                   fieldProps={{
                     disabled,
                     style: {
@@ -157,7 +162,7 @@ const SchemaDemo = () => {
         {
           label: '数字输入框',
           name: 'inputNumber',
-          type: 'input-number',
+          type: 'inputNumber',
           fieldProps: {
             prefix: '￥',
             addonBefore: <UserOutlined />,
@@ -166,7 +171,7 @@ const SchemaDemo = () => {
         {
           label: '日期',
           name: 'date',
-          type: 'datepicker',
+          type: 'datePicker',
           fieldProps: {
             placeholder: 'xxx date',
             showTime: true,
@@ -175,7 +180,7 @@ const SchemaDemo = () => {
         {
           label: '日期区间',
           name: 'dateRange',
-          type: 'rangepicker',
+          type: 'rangePicker',
           col: 12,
           labelCol: {
             span: 3,
@@ -209,18 +214,35 @@ const SchemaDemo = () => {
           },
         },
         {
+          label: '下拉框',
+          name: 'select',
+          type: 'select',
+          fieldProps: {
+            options: SelectData as any,
+          },
+        },
+        {
           label: '级联',
           name: 'cascader',
           type: 'cascader',
           fieldProps: {
-            options: CascaderOptions,
+            options: CascaderData,
           },
         },
         {
           label: '树选择',
           name: 'treeSelect',
-          type: 'tree-select',
+          type: 'treeSelect',
           fieldProps: {
+            treeData: TreeData,
+          },
+        },
+        {
+          label: '树多选',
+          name: 'multipleTreeSelect',
+          type: 'treeSelect',
+          fieldProps: {
+            multiple: true,
             treeData: TreeData,
           },
         },
@@ -232,7 +254,7 @@ const SchemaDemo = () => {
         {
           label: '复选框组',
           name: 'boxgroup',
-          type: 'checkbox-group',
+          type: 'checkboxGroup',
           fieldProps: {
             options: [
               {
@@ -249,7 +271,7 @@ const SchemaDemo = () => {
         {
           label: '单选组',
           name: 'radioGroup',
-          type: 'radio-group',
+          type: 'radioGroup',
           fieldProps: {
             // 切换为按钮类型
             // optionType: 'button',
@@ -367,10 +389,36 @@ const SchemaDemo = () => {
           },
         },
         {
+          type: 'divider',
+          col: 24,
+          wrapperCol: {
+            span: 24,
+          },
+          fieldProps: {
+            dashed: false,
+          },
+        },
+        {
+          type: 'descriptions',
+          col: 24,
+          wrapperCol: {
+            span: 24,
+          },
+          fieldProps: {
+            options: [
+              {
+                label: '描述1',
+                code: 'code',
+                value: 'value_1',
+              },
+            ],
+          },
+        },
+        {
           label: '分组',
           type: 'group',
           className: 'group-wrap',
-          col: 12,
+          col: 24,
           style: { padding: '12px', marginBottom: '16px', backgroundColor: '#eee' },
           options: [
             {

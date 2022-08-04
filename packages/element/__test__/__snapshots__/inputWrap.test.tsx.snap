@@ -3,7 +3,7 @@
 exports[`InputWrap Save Snapshot 1`] = `
 <span
   className="ant-input-affix-wrapper"
-  onMouseUp={[Function]}
+  onMouseDown={[Function]}
 >
   <input
     className="ant-input"

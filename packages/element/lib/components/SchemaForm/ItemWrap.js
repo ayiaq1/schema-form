@@ -33,11 +33,12 @@ var __rest =
  */
 import React, { memo } from 'react';
 import { Form } from 'antd';
-import { Element } from '../../index';
+import { Element, Field } from '../../index';
 import RenderWrap from './RenderWrap';
 var Item = Form.Item;
 var ItemWrap = function (_a) {
   var formDisabled = _a.formDisabled,
+    formReadonly = _a.formReadonly,
     initialValues = _a.initialValues,
     values = _a.values,
     render = _a.render,
@@ -48,6 +49,7 @@ var ItemWrap = function (_a) {
     fieldProps = _c === void 0 ? {} : _c,
     reset = __rest(_a, [
       'formDisabled',
+      'formReadonly',
       'initialValues',
       'values',
       'render',
@@ -57,7 +59,8 @@ var ItemWrap = function (_a) {
     ]);
   var _d = fieldProps,
     disabled = _d.disabled,
-    resetFieldProps = __rest(_d, ['disabled']);
+    readOnly = _d.readOnly,
+    resetFieldProps = __rest(_d, ['disabled', 'readOnly']);
   return React.createElement(
     Item,
     __assign({}, reset),
@@ -70,7 +73,16 @@ var ItemWrap = function (_a) {
             values: values,
             render: render,
             disabled: disabled !== null && disabled !== void 0 ? disabled : formDisabled,
+            readOnly: readOnly !== null && readOnly !== void 0 ? readOnly : formReadonly,
             initialValues: initialValues,
+          }),
+        )
+      : (readOnly !== null && readOnly !== void 0 ? readOnly : formReadonly)
+      ? React.createElement(
+          Field,
+          __assign({}, reset, {
+            fieldProps: __assign(__assign({}, resetFieldProps), { value: values }),
+            type: type,
           }),
         )
       : // 透传
