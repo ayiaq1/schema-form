@@ -37,7 +37,7 @@ const formatMomentFunc = (item: any, format: FormatTimeType, convertResult?: ICo
     //   : isMoment(item)
     //   ? item.format((convertResult as DataType) ?? format)
     //   : Number.isInteger(item)
-    //   ? moment.unix(item)
+    //   ? moment(item).unix();
     //   : moment(item).format(format);
   }
 };

@@ -1,6 +1,6 @@
-# Row
+# SchemaForm：row 布局
 
-## SchemaForm: Row
+## SchemaForm: row
 
 <code defaultShowCode src="../../packages/element/example/SchemaDemoRow.tsx" />
 
