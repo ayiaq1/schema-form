@@ -17,11 +17,6 @@ const FieldDemo = () => {
   return (
     <Card title="只读文本">
       <Form form={form} initialValues={initValues}>
-        <Item label="datePicker unixValueOf value">
-          <Field type="datePicker" value={unixValueOf} />
-        </Item>
-
-        {/*         
         <Item label="直接渲染的文本" name="txt">
           <Field
             type="text"
@@ -182,7 +177,7 @@ const FieldDemo = () => {
               ],
             }}
           />
-        </Item> */}
+        </Item>
       </Form>
     </Card>
   );
